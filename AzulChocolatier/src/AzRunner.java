@@ -1,4 +1,6 @@
 
 public class AzRunner {
-//hi
+	public static void main(String args[]) {
+		AzJFrame azFrame = new AzJFrame ("Chocolatier");
+	}
 }
