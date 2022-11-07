@@ -2,7 +2,7 @@ import java.util.*;
 
 public class factoryDisplay
 {
-  private ArrayList<Tiles> factories;
+  private ArrayList<Tile> factories;
   
   public factoryDisplay()
   {
