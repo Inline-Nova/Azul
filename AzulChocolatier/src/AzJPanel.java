@@ -23,6 +23,7 @@ public class AzJPanel extends JPanel{
 	}
 	
 	public void paint(Graphics g){
-		g.drawImage(closeInstr, 10,10,100,500,null);
+		g.fillRect(0, 0, getWidth(),  getHeight());
+		//g.drawImage(closeInstr, 10,10,100,500,null);
 	}
 }

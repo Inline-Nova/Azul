@@ -10,7 +10,7 @@ public class AzJFrame extends JFrame{
 		super(framename);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(WIDTH,HEIGHT);
-		//add(new AzPanel()); //Jennifer create this class
+		add(new AzJPanel());
 		setVisible(true);
 	}
 }
