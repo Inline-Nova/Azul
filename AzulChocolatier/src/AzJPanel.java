@@ -10,16 +10,27 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
-	private BufferedImage closeInstr, endScr, factory, instr, mainScr, 
-	noPat, pickPat, pickTile, startScr, tileBlu, tileblk, tileBrw, tileOne, tileRed, 
-	tileSc, tilewytl;
+	private BufferedImage closeInstr, endScr, factory, instr, mainScr, noPat, pickPat, pickTile, tileBlu, tileblk, tileBrw, tileOne, tileRed, tileSc, tilewytl;
 	private int choice;
 	
 	public AzJPanel(){
-		repaint();
+		
 		try {
 			closeInstr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_CloseInstructionsBtn.png"));
-			startScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_StartScreen.png"));
+			endScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_EndScreen.png"));
+			factory = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_Factory.png"));
+			instr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_Instructions.png"));
+			mainScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_MainScreen.png"));
+			noPat = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_NoPattern.png"));
+			pickPat = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_PickPattern.png"));
+			pickTile = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_PickTile.png"));
+			tileBlu =ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlack.png"));
+			tileblk = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlue.png"));
+			tileBrw = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBrown.png"));
+			tileOne = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileOne.png"));
+			tileRed = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileRed.png"));
+			tileSc = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileScore.png"));
+			tilewytl = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileWhite.png"));
 		}catch(Exception E) {
 			System.out.println("Exception Error");
 			return;
@@ -54,10 +65,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	}
 	
 	public void paint(Graphics g){
-		drawStartScr(g);
-	}
-	
-	public void drawStartScr(Graphics g) {
-		g.drawImage(startScr, 0, 0, getWidth(), getHeight(), null);
+		g.fillRect(0, 0, getWidth(),  getHeight());
+		g.drawImage(closeInstr, 10,10,500,50,null);
 	}
 }
