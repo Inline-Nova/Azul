@@ -11,14 +11,15 @@ import java.util.*;
 
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	private BufferedImage closeInstr, endScr, factory, instr, mainScr, 
-	noPat, pickPat, pickTile, tileBlu, tileblk, tileBrw, tileOne, tileRed, 
+	noPat, pickPat, pickTile, startScr, tileBlu, tileblk, tileBrw, tileOne, tileRed, 
 	tileSc, tilewytl;
 	private int choice;
 	
 	public AzJPanel(){
-		
+		repaint();
 		try {
 			closeInstr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_CloseInstructionsBtn.png"));
+			startScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_StartScreen.png"));
 		}catch(Exception E) {
 			System.out.println("Exception Error");
 			return;
@@ -53,7 +54,10 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	}
 	
 	public void paint(Graphics g){
-		g.fillRect(0, 0, getWidth(),  getHeight());
-		g.drawImage(closeInstr, 10,10,500,50,null);
+		drawStartScr(g);
+	}
+	
+	public void drawStartScr(Graphics g) {
+		g.drawImage(startScr, 0, 0, getWidth(), getHeight(), null);
 	}
 }
