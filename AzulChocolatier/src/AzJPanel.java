@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
-	private BufferedImage closeInstr, endScr, factory, instr, mainScr, noPat, pickPat, pickTile, tileBlu, tileblk, tileBrw, tileOne, tileRed, tileSc, tilewytl;
+	private BufferedImage closeInstr, endScr, factory, instr, mainScr, noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, tileRed, tileSc, tileWyt;
 	private int choice;
 	
 	public AzJPanel(){
@@ -25,12 +25,14 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			pickPat = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_PickPattern.png"));
 			pickTile = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_PickTile.png"));
 			tileBlu =ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlack.png"));
-			tileblk = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlue.png"));
+			tileBlk = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlue.png"));
 			tileBrw = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBrown.png"));
 			tileOne = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileOne.png"));
 			tileRed = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileRed.png"));
 			tileSc = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileScore.png"));
-			tilewytl = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileWhite.png"));
+			tileWyt = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileWhite.png"));
+			startScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_StartScreen.png"));
+			
 			System.out.println("ye");
 		}catch(Exception E) {
 			System.out.println("Exception Error");
@@ -66,7 +68,10 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	}
 	
 	public void paint(Graphics g){
-		g.fillRect(0, 0, getWidth(),  getHeight());
-		g.drawImage(closeInstr, 10,10,500,50,null);
+		drawStartScr(g);
+	}
+	
+	public void drawStartScr(Graphics g) {
+		g.drawImage(startScr, 0, 0, getWidth(), getHeight(), null);
 	}
 }
