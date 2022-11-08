@@ -12,9 +12,11 @@ import java.util.*;
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	private BufferedImage closeInstr, endScr, factory, instr, mainScr, noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, tileRed, tileSc, tileWyt, startScr;
 	private int choice;
+	private boolean start, end;
 	
 	public AzJPanel(){
-		
+		start = true;
+		end = false;
 		try {
 			closeInstr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_CloseInstructionsBtn.png"));
 			endScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_EndScreen.png"));
@@ -33,7 +35,6 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			tileWyt = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileWhite.png"));
 			startScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_StartScreen.png"));
 			
-			System.out.println("ye");
 		}catch(Exception E) {
 			System.out.println("Exception Error");
 			return;
@@ -58,8 +59,22 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
+		
 		System.out.println("loc is("+x+", "+y+")");
 		repaint();
+		if(e.getButton() == e.BUTTON1) {
+			if(x >= 724.0*(getWidth()/1775.0) && x <= 1117.0*(getWidth()/1775.0)
+					&& y >= 594.0*(getHeight()/972.0) && y <= 684.0*(getHeight()/972.0)) {
+				System.out.println("yes1");
+				start = false;
+			}
+			/*(if(x >= 732 && x <= 1111 && y >= 598 && y <= 680) {
+				System.out.println(getWidth());
+				System.out.println(getWidth()/1775);
+				System.out.println(getHeight());
+				start = false;
+			}*/
+		}
 	}
 	
 	public void addNotify() {
@@ -68,10 +83,19 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	}
 	
 	public void paint(Graphics g){
-		drawStartScr(g);
+		g.fillRect(0,0,getWidth(), getHeight());
+		if(start) {
+			g.drawImage(startScr, 0, 0, getWidth(), getHeight(), null);
+		}else if(end) {
+			drawEndScr(g);
+		}else {
+			g.drawImage(mainScr, 0, 0, getWidth(), getHeight(), null);
+		}
+		
 	}
 	
-	public void drawStartScr(Graphics g) {
-		g.drawImage(startScr, 0, 0, getWidth(), getHeight(), null);
+	public void drawEndScr(Graphics g) {
+		g.drawImage(endScr, 0, 0, getWidth(), getHeight(), null);
 	}
+	
 }
