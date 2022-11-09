@@ -81,7 +81,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		super.addNotify();
 		requestFocus();
 	}
-	
+	//hi
 	public void paint(Graphics g){
 		g.fillRect(0,0,getWidth(), getHeight());
 		if(start) {
