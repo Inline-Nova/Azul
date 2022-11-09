@@ -34,6 +34,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			tileSc = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileScore.png"));
 			tileWyt = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileWhite.png"));
 			startScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_StartScreen.png"));
+			//hu
 			
 		}catch(Exception E) {
 			System.out.println("Exception Error");
