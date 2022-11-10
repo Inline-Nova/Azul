@@ -1,7 +1,14 @@
-public class Tile {
-	private String color;
-	public String getColor()
-	{
-		return color;
-	}
+public class Tile
+{
+  private String color;
+  
+  public Tile(String col)
+  {
+	  color = col;
+  }
+  
+  public String toString() {
+	  return color;
+  }
 }
+
