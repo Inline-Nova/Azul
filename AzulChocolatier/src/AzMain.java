@@ -11,4 +11,13 @@ public class AzMain {
 	{
 		//uhqaiutw
 	}
+	
+	public playerBoard getPlayerBoard(int player) {
+		return boards.get(player);
+	}
+	
+	public factoryDisplay getFactories()
+	{
+		return factories;
+	}
 }
