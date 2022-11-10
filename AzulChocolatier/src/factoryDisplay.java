@@ -26,7 +26,7 @@ public class factoryDisplay
   
   public ArrayList<Tile> getSectTiles(int sect)
   {
-	  return factories.get(sect);
+	  return factories.get(sect); //wfwGwg
   }
 }
 
