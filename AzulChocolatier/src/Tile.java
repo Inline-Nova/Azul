@@ -2,8 +2,13 @@ public class Tile
 {
   private String color;
   
-  public Tile()
+  public Tile(String col)
   {
-	  //slay
+	  color = col;
+  }
+  
+  public String toString() {
+	  return color;
   }
 }
+
