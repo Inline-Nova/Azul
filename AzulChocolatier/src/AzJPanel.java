@@ -12,7 +12,6 @@ import java.util.*;
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	private BufferedImage closeInstr, endScr, factory, instr, mainScr, noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, tileRed, tileSc, tileWyt, startScr, ref;
 	private int choice;
-	private boolean start, end, instructions, pickFact;
 	
 	public AzJPanel(){
 		start = true;
@@ -80,6 +79,9 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			if(x >= 715*(getWidth()/1775.0) && x <= 1089*(getWidth()/1775.0) && y <= 907*(getHeight()/972.0) && y >= 860*(getHeight()/972.0))
 				instructions = !instructions;
 		}
+		
+		if(x >= 715 && x <= 1089 && y <= 907 && y >= 860)
+			instructions = !instructions;
 	}
 	
 	public void addNotify() {
@@ -104,6 +106,10 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			g.drawImage(closeInstr, (int)(705*(getWidth()/1775.0)), (int)(856*(getHeight()/972.0)), (int)(393*(getWidth()/1775.0)), (int)(65*(getHeight()/972.0)), null);
 		}
 		//g.drawImage(ref, 0, 0, getWidth(), getHeight(), null);
+		if(instructions && !start){
+			g.drawImage(instr, 567, 88, 650, 750, null);
+			g.drawImage(closeInstr, 705, 856, 393, 65, null);
+		}
 	}
 	
 	public void drawEndScr(Graphics g) {

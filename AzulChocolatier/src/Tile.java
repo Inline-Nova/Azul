@@ -1,6 +1,7 @@
 public class Tile
 {
   private String color;
+  //colors: blue, black, red, white, brown :)
   
   public Tile(String col)
   {
@@ -10,7 +11,4 @@ public class Tile
   public String toString() {
 	  return color;
   }
-  
-}//please
-
-
+}
