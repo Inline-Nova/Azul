@@ -89,8 +89,10 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			g.drawImage(mainScr, 0, 0, getWidth(), getHeight(), null);
 		}
 		
-		if(instructions && !start)
+		if(instructions && !start){
 			g.drawImage(instr, 567, 88, 650, 750, null);
+			g.drawImage(closeInstr, 705, 856, 393, 65, null);
+		}
 	}
 	
 	public void drawEndScr(Graphics g) {
