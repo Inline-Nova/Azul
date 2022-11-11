@@ -14,7 +14,7 @@ public class factoryDisplay
   {
 	for(int i = 0; i < 10; i++)
 	{
-		//factories.add(bag.getNewFacTiles()); //Bag class needs to be finished
+		factories.add(bag.getNewFacTiles()); //Bag class needs to be finished
 	}
   }
   

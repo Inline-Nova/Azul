@@ -68,12 +68,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				System.out.println("yes1");
 				start = false;
 			}
-			/*(if(x >= 732 && x <= 1111 && y >= 598 && y <= 680) {
-				System.out.println(getWidth());
-				System.out.println(getWidth()/1775);
-				System.out.println(getHeight());
-				start = false;
-			}*/
+			//hi
 		}
 	}
 	
