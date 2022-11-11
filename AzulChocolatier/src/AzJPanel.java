@@ -68,8 +68,10 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				System.out.println("yes1");
 				start = false;
 			}
-			//hi
 		}
+		
+		if(x >= 715 && x <= 1089 && y <= 907 && y >= 860)
+			instructions = !instructions;
 	}
 	
 	public void addNotify() {
@@ -87,6 +89,8 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			g.drawImage(mainScr, 0, 0, getWidth(), getHeight(), null);
 		}
 		
+		if(instructions && !start)
+			g.drawImage(instr, 567, 88, 650, 750, null);
 	}
 	
 	public void drawEndScr(Graphics g) {
