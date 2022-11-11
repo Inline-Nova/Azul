@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class Bag
+public class Bag extends tileStorage
 {
   private ArrayList<Tile> tiles;
   
   public Bag()
   {
-	  tiles = new ArrayList<Tile>() tiles;\
+	  tiles = new ArrayList<Tile>();
 	  //20 of each color: blue, black, red, white, brown
 	  for(int i = 0; i < 20; i++)
 	  {
@@ -16,7 +16,7 @@ public class Bag
 		  tiles.add(new Tile("white"));
 		  tiles.add(new Tile("brown"));
 	  }
-	  shuffle(tiles);
+	  super.shuffle(tiles);
   }
   
   public ArrayList<Tile> getNewFacTiles()

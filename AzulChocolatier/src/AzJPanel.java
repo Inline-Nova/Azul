@@ -11,6 +11,7 @@ import java.util.*;
 
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	private BufferedImage closeInstr, endScr, factory, instr, mainScr, noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, tileRed, tileSc, tileWyt, startScr, ref;
+	private boolean start, end, instructions, pickFact;
 	private int choice;
 	
 	public AzJPanel(){
