@@ -14,6 +14,11 @@ public class Discarded
 	  return tiles;
   }
   
+  public void discard(Tile t)
+  {
+	  tiles.add(t);
+  }
+  
   public void updateAfterRefill()
   {
 	  for(int i = 0; i < 100; i++)
