@@ -2,21 +2,22 @@ import java.util.*;
 
 public class Bag extends tileStorage
 {
-  private ArrayList<Tile> tiles;
+  
   
   public Bag()
   {
-	  tiles = new ArrayList<Tile>();
+	  ArrayList<Tile> temp = new ArrayList<>();
 	  //20 of each color: blue, black, red, white, brown
 	  for(int i = 0; i < 20; i++)
 	  {
-		  tiles.add(new Tile("blue"));
-		  tiles.add(new Tile("black"));
-		  tiles.add(new Tile("red"));
-		  tiles.add(new Tile("white"));
-		  tiles.add(new Tile("brown"));
+		  temp.add(new Tile("blue"));
+		  temp.add(new Tile("black"));
+		  temp.add(new Tile("red"));
+		  temp.add(new Tile("white"));
+		  temp.add(new Tile("brown"));
 	  }
-	  super.shuffle(tiles);
+	  super.fillTiles(temp);
+
   }
   
   public ArrayList<Tile> getNewFacTiles()
@@ -24,22 +25,21 @@ public class Bag extends tileStorage
 	  ArrayList<Tile> newTiles = new ArrayList<Tile>();
 	  for(int i = 0; i < 4; i++)
 	  {
-		  newTiles.add(tiles.get(0));
-		  tiles.remove(0);
+		  newTiles.add(super.getTiles().get(0));
+		  super.getTiles().remove(0);
 	  }
 	  return newTiles;
   }
   
+  
+  
   public void refill(Discarded dis)
   {
 	  //need to update discarded class
-	  ArrayList<Tile> yeet = new ArrayList<Tile>();
-	  yeet = dis.getDiscarded();
-	  for(int i = 0; i < 100; i++)
-	  {
-		  tiles.add(yeet.get(i));
-	  }
-	  dis.updateAfterRefill();
-	  shuffle(tiles);
+	  super.fillTiles(dis.getTiles());
+  }
+  
+  public String toString() {
+	  return (super.getTiles().toString());
   }
 }

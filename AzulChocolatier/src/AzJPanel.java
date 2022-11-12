@@ -86,8 +86,8 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				instructions = !instructions;
 		}
 		
-		if(x >= 715 && x <= 1089 && y <= 907 && y >= 860)
-			instructions = !instructions;
+		//if(x >= 715 && x <= 1089 && y <= 907 && y >= 860)
+			//instructions = !instructions;
 	}
 	
 	public void addNotify() {
@@ -135,13 +135,13 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	
 	public void drawPlayerBoards(Graphics g) {
 		if(game.getCurr() == 0) {
-			g.drawImage(choco, 491, 96, 50, 50, null);
+			g.drawImage(choco, (int)(491*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}else if(game.getCurr() == 1){
-			g.drawImage(choco, 1237, 96, 50, 50, null);
+			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}else if(game.getCurr() == 2){
-			g.drawImage(choco, 491, 828, 50, 50, null);
+			g.drawImage(choco, (int)(491*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}else if(game.getCurr() == 3){
-			g.drawImage(choco, 1237, 828, 50, 50, null);
+			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}
 	}
 }

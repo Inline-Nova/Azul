@@ -1,29 +1,25 @@
 import java.util.*;
 
-public class Discarded
+public class Discarded extends tileStorage
 {
-  private ArrayList<Tile> tiles;
   
   public Discarded()
   {
-	  tiles = new ArrayList<Tile>();
+	  super();
   }
-  
-  public ArrayList<Tile> getDiscarded()
-  {
-	  return tiles;
-  }
+
   
   public void discard(Tile t)
   {
-	  tiles.add(t);
+	  super.addTile(t);
   }
   
   public void updateAfterRefill()
   {
-	  for(int i = 0; i < 100; i++)
-	  {
-		  tiles.remove(0);
-	  }
+	  super.empty();
+  }
+  
+  public boolean hasTiles() {
+	  return super.getTiles().size() > 0;
   }
 }

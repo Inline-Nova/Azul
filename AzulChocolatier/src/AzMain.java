@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class AzMain {
 	private ArrayList<playerBoard> boards;
-	private Discarded discardedTiles;
+	private Discarded discarded;
 	private Bag bag;
 	private factoryDisplay factories;
 	private int currFact, currPlayer;
@@ -18,6 +18,8 @@ public class AzMain {
 		currPlayer = (int)(Math.random()*4);
 		System.out.println("Curr player: " + currPlayer);
 		//uhqaiutw
+		bag = new Bag();
+		discarded = new Discarded();
 	}
 	
 	public playerBoard getPlayerBoard(int player) {
