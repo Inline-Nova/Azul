@@ -9,6 +9,14 @@ public class AzMain {
 	
 	public AzMain()
 	{
+		boards = new ArrayList<playerBoard>();
+		boards.add(new playerBoard()); //idx 0 top left
+		boards.add(new playerBoard()); //idx 1 top right
+		boards.add(new playerBoard()); //idx 2 botton left
+		boards.add(new playerBoard()); //idx 3 bottom right
+		
+		currPlayer = (int)(Math.random()*4);
+		System.out.println("Curr player: " + currPlayer);
 		//uhqaiutw
 	}
 	
@@ -19,5 +27,9 @@ public class AzMain {
 	public factoryDisplay getFactories()
 	{
 		return factories;
+	}
+	
+	public int getCurr() {
+		return currPlayer;
 	}
 }

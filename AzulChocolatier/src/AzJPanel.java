@@ -10,11 +10,15 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
-	private BufferedImage closeInstr, endScr, factory, instr, mainScr, noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, tileRed, tileSc, tileWyt, startScr, ref;
+	private BufferedImage closeInstr, endScr, factory, instr, mainScr, 
+	noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, 
+	tileRed, tileSc, tileWyt, startScr, ref, choco;
 	private boolean start, end, instructions, pickFact;
 	private int choice;
+	private AzMain game;
 	
 	public AzJPanel(){
+		game = new AzMain();
 		start = true;
 		end = false;
 		instructions = false;
@@ -36,6 +40,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			tileWyt = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileWhite.png"));
 			startScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_StartScreen.png"));
 			ref = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_Ref.png"));
+			choco = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_CurrChoco.png"));
 			
 		}catch(Exception E) {
 			System.out.println("Exception Error");
@@ -100,6 +105,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		}else { // all main stuff
 			g.drawImage(mainScr, 0, 0, getWidth(), getHeight(), null);
 			drawFactories(g);
+			drawPlayerBoards(g);
 		}
 		
 		if(instructions && !start && !end) {
@@ -107,10 +113,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			g.drawImage(closeInstr, (int)(705*(getWidth()/1775.0)), (int)(856*(getHeight()/972.0)), (int)(393*(getWidth()/1775.0)), (int)(65*(getHeight()/972.0)), null);
 		}
 		//g.drawImage(ref, 0, 0, getWidth(), getHeight(), null);
-		if(instructions && !start){
-			g.drawImage(instr, 567, 88, 650, 750, null);
-			g.drawImage(closeInstr, 705, 856, 393, 65, null);
-		}
+		
 	}
 	
 	public void drawEndScr(Graphics g) {
@@ -128,5 +131,17 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		g.drawImage(factory, (int)(563*(getWidth()/1775.0)), (int)(531*(getHeight()/972.0)), (int)(150*(getWidth()/1775.0)), (int)(150*(getHeight()/972.0)), null);
 		g.drawImage(factory, (int)(540*(getWidth()/1775.0)), (int)(340*(getHeight()/972.0)), (int)(150*(getWidth()/1775.0)), (int)(150*(getHeight()/972.0)), null);
 		g.drawImage(factory, (int)(633*(getWidth()/1775.0)), (int)(173*(getHeight()/972.0)), (int)(150*(getWidth()/1775.0)), (int)(150*(getHeight()/972.0)), null);
+	}
+	
+	public void drawPlayerBoards(Graphics g) {
+		if(game.getCurr() == 0) {
+			g.drawImage(choco, 491, 96, 50, 50, null);
+		}else if(game.getCurr() == 1){
+			g.drawImage(choco, 1237, 96, 50, 50, null);
+		}else if(game.getCurr() == 2){
+			g.drawImage(choco, 491, 828, 50, 50, null);
+		}else if(game.getCurr() == 3){
+			g.drawImage(choco, 1237, 828, 50, 50, null);
+		}
 	}
 }
