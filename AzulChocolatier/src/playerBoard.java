@@ -29,5 +29,8 @@ public class playerBoard
   public ArrayList<String[]> getPatternLines(){
 	  return patternLines;
   }
+  
+  
+  
 }
 
