@@ -34,4 +34,13 @@ public class AzMain {
 	public int getCurr() {
 		return currPlayer;
 	}
+	
+		public ArrayList<int> chooseFac(int sect)
+	{
+		//the numbers go in order of black, blue, brown, red, white
+		ArrayList<int> available = new ArrayList<int>();
+		ArrayList<Tile> tiles = new ArrayList<Tile>();
+		tiles = getSectTiles(sect);
+		return available;
+	}
 }
