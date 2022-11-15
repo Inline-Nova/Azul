@@ -5,7 +5,7 @@ public class playerBoard
   private ArrayList<String[]> patternLines;
   private String[] floorLine;
   private ArrayList<TreeSet<String>> wall;
-  
+  private boolean gameDone;
   
   public playerBoard()
   {
@@ -30,7 +30,9 @@ public class playerBoard
 	  return patternLines;
   }
   
-  
-  
+  public boolean gameEnd() {
+	  gameDone = true;
+	  return gameDone;
+  }
 }
 

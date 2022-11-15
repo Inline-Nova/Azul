@@ -34,4 +34,28 @@ public class AzMain {
 	public int getCurr() {
 		return currPlayer;
 	}
+	
+    public ArrayList<Integer> chooseFac(int sect){
+		//the numbers go in order of black, blue, brown, red, white
+		ArrayList<Integer> available = new ArrayList<Integer>();
+		ArrayList<Tile> tiles = new ArrayList<Tile>();
+		tiles = factories.getSectTiles(sect);
+		for(int i = 0; i < 5; i++) {
+			available.add(0);
+		}
+		for(int i = 0; i< tiles.size(); i++) {
+			if(tiles.get(i).toString().equals("black")) {
+				available.set(0, available.get(0) + 1);
+			}else if(tiles.get(i).toString().equals("blue")) {
+				available.set(1, available.get(1) + 1);
+			}else if(tiles.get(i).toString().equals("brown")) {
+				available.set(2, available.get(2) + 1);
+			}else if(tiles.get(i).toString().equals("red")) {
+				available.set(3, available.get(3) + 1);
+			}else if(tiles.get(i).toString().equals("white")) {
+				available.set(4, available.get(4) + 1);
+			}
+		}
+		return available;
+	}
 }

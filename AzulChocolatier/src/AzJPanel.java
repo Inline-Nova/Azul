@@ -13,7 +13,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	private BufferedImage closeInstr, endScr, factory, instr, mainScr, 
 	noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, 
 	tileRed, tileSc, tileWyt, startScr, ref, choco;
-	private boolean start, end, instructions, pickFact;
+	private boolean start, end, instructions, pickFact, pickPattern;
 	private int choice;
 	private AzMain game;
 	
@@ -22,6 +22,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		start = true;
 		end = false;
 		instructions = false;
+		pickFact = false;
 		try {
 			closeInstr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_CloseInstructionsBtn.png"));
 			endScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_EndScreen.png"));
@@ -76,9 +77,10 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				System.out.println("yes1");
 				start = false;
 			}
-			if(pickFact) {
-				pickFact = false;
+			if(!pickFact && !pickPat) {
+				
 				//add mouse lister stuff for all factories
+				//once fact is choosen 
 			}
 			
 			//for instructions
@@ -143,5 +145,9 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		}else if(game.getCurr() == 3){
 			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}
+	}
+	
+	public void drawPickFac(Graphics g) {
+		
 	}
 }
