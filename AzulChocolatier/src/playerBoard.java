@@ -6,6 +6,7 @@ public class playerBoard
   private String[] floorLine;
   private ArrayList<TreeSet<String>> wall;
   private boolean gameDone;
+  private int score;
   
   public playerBoard()
   {
@@ -33,6 +34,20 @@ public class playerBoard
   public boolean gameEnd() {
 	  gameDone = true;
 	  return gameDone;
+  }
+  
+  public void checkRow() {
+	  for (String[] a: patternLines) {
+		  int num = 0;
+		  for (int i = 0; i < a.length; i++) {
+			  if (!a[i].equals(null)) {
+				  num++;
+			  }
+		  }
+		  if (num == 5) {
+			  score += 2;
+		  }
+	  }
   }
 }
 
