@@ -78,7 +78,10 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				start = false;
 			}
 			if(!pickFact && !pickPattern) {
-				
+				if(x>835 && x<985 && y>117 && y<267) {
+					System.out.println("1");
+					//chooseFac(1);
+				}
 				//add mouse lister stuff for all factories
 				//once fact is choosen 
 			}
