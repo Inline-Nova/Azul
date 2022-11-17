@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 
 
-public class AzJFrame extends JFrame{
+public class AzJFrame extends JFrame{//hi
 	final int WIDTH = 1787;
 	final int HEIGHT = 1007;
 	
