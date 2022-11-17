@@ -20,6 +20,7 @@ public class AzMain {
 		//uhqaiutw
 		bag = new Bag();
 		discarded = new Discarded();
+		factories = factoryDisplay(bag);
 	}
 	
 	public playerBoard getPlayerBoard(int player) {
@@ -58,4 +59,17 @@ public class AzMain {
 		}
 		return available;
 	}
+    
+    
+    public ArrayList<Boolean> chooseTile(String color)
+    {
+    	ArrayList<Boolean> check = new ArrayList<Boolean>();
+    	
+    	return check;
+    }
+    
+    public void newRound()
+    {
+    	//refill factories, set currPlayer to whoever has starting tile
+    }
 }
