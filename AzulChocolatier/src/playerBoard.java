@@ -49,5 +49,12 @@ public class playerBoard
 		  }
 	  }
   }
+  public void checkColumn {
+	  for (int j = 0; j < patternLines.get(i).length; j++) {
+		  for (int i = 0; i < patternLines.size(); i++) {
+			  
+		  }
+	  }
+  }
 }
 
