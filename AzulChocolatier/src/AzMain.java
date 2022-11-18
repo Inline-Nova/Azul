@@ -17,7 +17,7 @@ public class AzMain {
 		
 		currPlayer = (int)(Math.random()*4);
 		System.out.println("Curr player: " + currPlayer);
-		//uhqaiutw
+		//set number for whoever has starting tile
 		bag = new Bag();
 		discarded = new Discarded();
 		factories = new factoryDisplay(bag, discarded);
@@ -70,6 +70,7 @@ public class AzMain {
     
     public void newRound()
     {
+    	factories.fillFactories(bag, discarded);
     	
     	//refill factories, set currPlayer to whoever has starting tile
     }
