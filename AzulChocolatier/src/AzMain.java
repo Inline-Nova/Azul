@@ -20,7 +20,7 @@ public class AzMain {
 		//uhqaiutw
 		bag = new Bag();
 		discarded = new Discarded();
-		factories = factoryDisplay(bag);
+		factories = new factoryDisplay(bag, discarded);
 	}
 	
 	public playerBoard getPlayerBoard(int player) {
@@ -70,6 +70,7 @@ public class AzMain {
     
     public void newRound()
     {
+    	
     	//refill factories, set currPlayer to whoever has starting tile
     }
 }
