@@ -51,10 +51,14 @@ public class playerBoard
   }
   public void checkColumn {
 	  for (int j = 0; j < patternLines.get(j).length; j++) {
+		  int num = 0;
 		  for (int i = 0; i < patternLines.size(); i++) {
 			  if (!patternLines.get(i)[j].equals(null)) {
-				  score += 5;
+				  num++;
 			  }
+		  }
+		  if (num == 5) {
+			  score += 5;
 		  }
 	  }
   }
