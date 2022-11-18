@@ -4,23 +4,21 @@ public class factoryDisplay
 {
   private ArrayList<ArrayList<Tile>> factories; //hi
   
-  public factoryDisplay(Bag bag)
+  public factoryDisplay(Bag bag, Discarded dis)
   {
 	  factories = new ArrayList<ArrayList<Tile>>();
-	  fillFactories(bag);
+	  fillFactories(bag, dis);
   }
   
-  public void fillFactories(Bag bag)
+  public void fillFactories(Bag bag, Discarded dis)
   {
 	for(int i = 0; i < 10; i++)
 	{
 		if(bag.getTiles().isEmpty())
 		{
-			factories.add(null)
+			bag.refill(dis);
 		}
-		else {
-			factories.add(bag.getNewFacTiles()); //Bag class needs to be finished
-		}
+		factories.add(bag.getNewFacTiles()); //Bag class needs to be finished
 	}
   }
   
