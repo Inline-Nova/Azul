@@ -8,6 +8,7 @@ public class factoryDisplay
   {
 	  factories = new ArrayList<ArrayList<Tile>>();
 	  fillFactories(bag, dis);
+	  setCoords();
   }
   
   public void fillFactories(Bag bag, Discarded dis)
@@ -32,4 +33,22 @@ public class factoryDisplay
   {
 	  return factories.get(sect); //wf
   }
+  
+  public void setCoords(){
+	  int[][][] coords = { {{867, 150},{917, 150}, {867, 200}, {917, 200}}, 
+			  {{1070, 225}, {1120, 225}, {1070, 275}, {1120, 275}},
+			  {{1130, 410}, {1180, 410}, {1130, 460}, {1180,460}},
+			  {{1107, 595}, {1157, 595}, {1107, 645}, {1157, 645}},
+			  {{940, 700}, {990, 700}, {940, 750}, {990, 750}},
+			  {{744, 703}, {794, 703}, {744, 753}, {794,753}},
+			  {{595, 563}, {645, 563}, {595, 613}, {645, 613}},
+			  {{572, 375}, {622, 375}, {572, 425}, {622, 425}},
+			  {{666, 207}, {716, 207}, {666, 257}, {716, 257}}};
+	  for(int i = 0; i < 9/*factories.size()*/; i++) {
+		  for(int j = 0; j < 4/*factories.get(0).size()*/; j++) {
+			  factories.get(i).get(j).changeCoords(coords[i][j][0], coords[i][j][1]);
+		  }
+	  }
+  }
+	  
 }

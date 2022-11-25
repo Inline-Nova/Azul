@@ -49,7 +49,7 @@ public class playerBoard
 		  }
 	  }
   }
-  public void checkColumn {
+  public void checkColumn() {
 	  for (int j = 0; j < patternLines.get(j).length; j++) {
 		  int num = 0;
 		  for (int i = 0; i < patternLines.size(); i++) {
@@ -62,7 +62,7 @@ public class playerBoard
 		  }
 	  }
   }
-  public void checkCompleteSet {
+  public void checkCompleteSet() {
 	  
   }
 }
