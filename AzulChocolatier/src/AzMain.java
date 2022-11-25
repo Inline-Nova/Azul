@@ -5,10 +5,11 @@ public class AzMain {
 	private Discarded discarded;
 	private Bag bag;
 	private factoryDisplay factories;
-	private int currFact, currPlayer;
+	private int currPlayer;
+	private int[] choices = {0,0,0};
 	
-	public AzMain()
-	{
+	public AzMain() {
+	
 		boards = new ArrayList<playerBoard>();
 		boards.add(new playerBoard()); //idx 0 top left
 		boards.add(new playerBoard()); //idx 1 top right
@@ -23,6 +24,12 @@ public class AzMain {
 		factories = new factoryDisplay(bag, discarded);
 	}
 	
+	public void changeChoices(int sect, int tile, int row) {
+		if(sect != 0) choices[0] = sect-1; //0-10 factories or mid
+		if(tile != 0) choices[1] = tile-1; //0-4
+		if(row != 0) choices[2] = row-1; //0-4
+	}
+	
 	public playerBoard getPlayerBoard(int player) {
 		return boards.get(player);
 	}
@@ -34,6 +41,10 @@ public class AzMain {
 	
 	public int getCurr() {
 		return currPlayer;
+	}
+	
+	public int getSect() {
+		return choices[0];
 	}
 	
     public ArrayList<Integer> chooseFac(int sect){
