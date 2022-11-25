@@ -72,10 +72,25 @@ public class AzMain {
 	}
     
     
-    public ArrayList<Boolean> chooseTile(String color)
+     public ArrayList<Boolean> chooseTile(String color)
     {
     	ArrayList<Boolean> check = new ArrayList<Boolean>();
+    	//gets the playerBoard of currPlayer
+    	playerBoard currentPlayer = new playerBoard();
+    	currentPlayer = boards.get(currPlayer);
     	
+    	ArrayList<TreeSet<String>> wall = currentPlayer.getWall();
+    	for(int i = 0; i < 5; i++)
+    	{
+    		if(wall.get(i).contains(color))
+    		{
+    			check.add(false);
+    		}
+    		else
+    		{
+    			check.add(true);
+    		}
+    	}
     	return check;
     }
     
