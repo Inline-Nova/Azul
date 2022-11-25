@@ -12,7 +12,7 @@ import java.util.*;
 public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	private BufferedImage closeInstr, endScr, factory, instr, mainScr, 
 	noPat, pickPat, pickTile, tileBlu, tileBlk, tileBrw, tileOne, 
-	tileRed, tileSc, tileWyt, startScr, ref, choco;
+	tileRed, tileSc, tileWyt, startScr, ref, ref1, ref2, choco;
 	private boolean start, end, instructions, pickFact, pickPattern;
 	private int choice;
 	private AzMain game;
@@ -32,8 +32,8 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			noPat = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_NoPattern.png"));
 			pickPat = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_PickPattern.png"));
 			pickTile = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_PickTile.png"));
-			tileBlu =ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlack.png"));
-			tileBlk = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlue.png"));
+			tileBlu =ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlue.png"));
+			tileBlk = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBlack.png"));
 			tileBrw = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileBrown.png"));
 			tileOne = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileOne.png"));
 			tileRed = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileRed.png"));
@@ -41,6 +41,8 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			tileWyt = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_TileWhite.png"));
 			startScr = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_StartScreen.png"));
 			ref = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_Ref.png"));
+			ref1 = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_Ref1.png"));
+			ref2 = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_Ref2.png"));
 			choco = ImageIO.read(AzJPanel.class.getResource("/AzulPics/Az_CurrChoco.png"));
 			
 		}catch(Exception E) {
@@ -74,13 +76,46 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			// for starting the game
 			if(start && x >= 724.0*(getWidth()/1775.0) && x <= 1117.0*(getWidth()/1775.0)
 					&& y >= 594.0*(getHeight()/972.0) && y <= 684.0*(getHeight()/972.0)) {
-				System.out.println("yes1");
+				System.out.println("What");
 				start = false;
 			}
-			if(!pickFact && !pickPattern) {
-				if(x>835 && x<985 && y>117 && y<267) {
+			if(!start && !pickFact && !pickPattern) {
+				if(x>835*(getWidth()/1775.0) && x<985*(getWidth()/1775.0) && y>117*(getHeight()/972.0) && y<267*(getHeight()/972.0)) {
 					System.out.println("1");
+					pickFact = true;
 					//chooseFac(1);
+				}else if(x>1037*(getWidth()/1775.0) && x<1187*(getWidth()/1775.0) && y>193*(getHeight()/972.0) && y<343*(getHeight()/972.0)) {
+					System.out.println("2");
+					pickFact = true;
+					//chooseFac(2);
+				}else if(x>1099*(getWidth()/1775.0) && x<1249*(getWidth()/1775.0) && y>375*(getHeight()/972.0) && y<525*(getHeight()/972.0)) {
+					System.out.println("3");
+					pickFact = true;
+					//chooseFac(3);
+				}else if(x>1075*(getWidth()/1775.0) && x<1225*(getWidth()/1775.0) && y>562*(getHeight()/972.0) && y<712*(getHeight()/972.0)) {
+					System.out.println("4");
+					pickFact = true;
+					//chooseFac(4);
+				}else if(x>907*(getWidth()/1775.0) && x<1057*(getWidth()/1775.0) && y>670*(getHeight()/972.0) && y<820*(getHeight()/972.0)) {
+					System.out.println("5");
+					pickFact = true;
+					//chooseFac(5);
+				}else if(x>711*(getWidth()/1775.0) && x<861*(getWidth()/1775.0) && y>672*(getHeight()/972.0) && y<822*(getHeight()/972.0)) {
+					System.out.println("6");
+					pickFact = true;
+					//chooseFac(6);
+				}else if(x>563*(getWidth()/1775.0) && x<713*(getWidth()/1775.0) && y>531*(getHeight()/972.0) && y<681*(getHeight()/972.0)) {
+					System.out.println("7");
+					pickFact = true;
+					//chooseFac(7);
+				}else if(x>540*(getWidth()/1775.0) && x<690*(getWidth()/1775.0) && y>340*(getHeight()/972.0) && y<490*(getHeight()/972.0)) {
+					System.out.println("8");
+					pickFact = true;
+					//chooseFac(8);
+				}else if(x>633*(getWidth()/1775.0) && x<783*(getWidth()/1775.0) && y>173*(getHeight()/972.0) && y<323*(getHeight()/972.0)) {
+					System.out.println("9");
+					pickFact = true;
+					//chooseFac(9);
 				}
 				//add mouse lister stuff for all factories
 				//once fact is choosen 
@@ -110,15 +145,45 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		}else { // all main stuff
 			g.drawImage(mainScr, 0, 0, getWidth(), getHeight(), null);
 			drawFactories(g);
+			drawTiles(g);
 			drawPlayerBoards(g);
+			if(pickFact && !pickPattern) {
+				drawPickFact(g);
+			}
 		}
 		
 		if(instructions && !start && !end) {
 			g.drawImage(instr, (int)(567.0*(getWidth()/1775.0)), (int)(88*(getHeight()/972.0)), (int)(650*(getWidth()/1775.0)), (int)(750*(getHeight()/972.0)), null);
 			g.drawImage(closeInstr, (int)(705*(getWidth()/1775.0)), (int)(856*(getHeight()/972.0)), (int)(393*(getWidth()/1775.0)), (int)(65*(getHeight()/972.0)), null);
 		}
-		//g.drawImage(ref, 0, 0, getWidth(), getHeight(), null);
+		//g.drawImage(ref2, 0, 0, getWidth(), getHeight(), null);
 		
+	}
+	
+	public void drawTiles(Graphics g) {
+		//System.out.println("hi");
+		ArrayList<ArrayList<Tile>> tempFact = game.getFactories().getFactories();
+		//System.out.println(tempFact.toString());
+		for(int i = 0; i < 9; i++) {
+			ArrayList<Tile> sect = tempFact.get(i);
+			for(Tile ti: sect) {
+				if(ti.toString().equals("black")){
+					g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)), null);
+				}else if(ti.toString().equals("blue")) {
+					g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)), null);
+				}else if(ti.toString().equals("brown")) {
+					g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)), null);
+				}else if(ti.toString().equals("red")) {
+					g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)), null);
+				}else if(ti.toString().equals("white")) {
+					g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)), null);
+				}
+			}
+		}
+		//g.drawImage(tileBlu, tempFact.get(0).get(0).getX(), tempFact.get(0).get(0).getY(), 30, 30, null);
+		//g.drawImage(tileBlu, tempFact.get(0).get(1).getX(), tempFact.get(0).get(1).getY(), 30, 30, null);
+		//g.drawImage(tileBlu, tempFact.get(0).get(2).getX(), tempFact.get(0).get(2).getY(), 30, 30, null);
+		//g.drawImage(tileBlu, tempFact.get(0).get(3).getX(), tempFact.get(0).get(3).getY(), 30, 30, null);
 	}
 	
 	public void drawEndScr(Graphics g) {
@@ -150,7 +215,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		}
 	}
 	
-	public void drawPickFac(Graphics g) {
-		
+	public void drawPickFact(Graphics g) {
+		g.drawImage(pickTile, (int)(442*(getWidth()/1775.0)), (int)(202*(getHeight()/972.0)), (int)(380*(getWidth()/1775.0)), (int)(596*(getHeight()/972.0)), null);
 	}
 }
