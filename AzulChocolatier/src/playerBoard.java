@@ -1,10 +1,11 @@
 import java.util.*;
+import java.util.TreeSet;
 
 public class playerBoard
 {
   private ArrayList<String[]> patternLines;
   private String[] floorLine;
-  private ArrayList<TreeSet<String>> wall;
+  private ArrayList<TreeSet<Tile>> wall;
   private boolean gameDone;
   private int score;
   
@@ -16,10 +17,13 @@ public class playerBoard
 	  }
 	  floorLine = new String[7];
 	  wall = new ArrayList<>();
+	  for(int i = 0; i < 6; i++) {
+		  wall.add(new TreeSet<Tile>());
+	  }
 	  
   }
   
-  public ArrayList<TreeSet<String>> getWall(){
+  public ArrayList<TreeSet<Tile>> getWall(){
 	  return wall;
   }
   

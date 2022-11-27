@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class AzMain {
 	private ArrayList<playerBoard> boards;
@@ -47,6 +48,10 @@ public class AzMain {
 		return choices[0];
 	}
 	
+	public int getTile() {
+		return choices[1];
+	}
+	
     public ArrayList<Integer> chooseFac(int sect){
 		//the numbers go in order of black, blue, brown, red, white
 		ArrayList<Integer> available = new ArrayList<Integer>();
@@ -79,7 +84,7 @@ public class AzMain {
     	playerBoard currentPlayer = new playerBoard();
     	currentPlayer = boards.get(currPlayer);
     	
-    	ArrayList<TreeSet<String>> wall = currentPlayer.getWall();
+    	ArrayList<TreeSet<Tile>> wall = currentPlayer.getWall();
     	for(int i = 0; i < 5; i++)
     	{
     		if(wall.get(i).contains(color))
