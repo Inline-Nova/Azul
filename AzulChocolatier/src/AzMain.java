@@ -80,8 +80,9 @@ public class AzMain {
 	}
     
     
-     public ArrayList<Boolean> chooseTile(String color) //I don't fully understand what this does
+        public ArrayList<Boolean> chooseTile(String color) //returns arraylist of boolean if tile can go in the pattern lines
     {
+    	Tile t = new Tile(color);
     	ArrayList<Boolean> check = new ArrayList<Boolean>();
     	//gets the playerBoard of currPlayer
     	playerBoard currentPlayer = new playerBoard();
@@ -90,13 +91,26 @@ public class AzMain {
     	ArrayList<TreeSet<Tile>> wall = currentPlayer.getWall();
     	for(int i = 0; i < 5; i++)
     	{
-    		if(wall.get(i).contains(color))
+    		if(wall.get(i).contains(t))
     		{
     			check.add(false);
     		}
     		else
     		{
     			check.add(true);
+    		}
+    	}
+    	
+    	ArrayList<Tile[]> patternLines = currentPlayer.getPatternLines();
+    	for(int i = 0; i < 5; i++)
+    	{
+    		//if(patternLines.get(i).contains(t)) //array does not have contain method
+    		{
+    			check.set(i, false);
+    		}
+    		else
+    		{
+    			check.set(i, true);
     		}
     	}
     	return check;
