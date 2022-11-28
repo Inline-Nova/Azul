@@ -11,6 +11,7 @@ public class playerBoard
   
   public playerBoard()
   {
+	  score = 0;
 	  patternLines = new ArrayList<>();
 	  for(int i = 1; i < 6; i++) {
 		  patternLines.add(new Tile[i]); 
@@ -76,6 +77,10 @@ public class playerBoard
 	  return patternLines;
   }
   
+  public int getScore() {
+	  return score;
+  }
+  
   public boolean gameEnd() {
 	  gameDone = true;
 	  return gameDone;
@@ -108,6 +113,10 @@ public class playerBoard
 	  }
   }
   public void checkCompleteSet() {
+	  
+  }
+  
+  public void setCoords() {
 	  
   }
 }
