@@ -118,7 +118,7 @@ public class AzMain {
      	
      	System.out.println(tis.toString());
      	boards.get(currPlayer).addToPatternLines(tis, choices[2]);
-     	System.out.println(boards.get(0).printPatternLines());
+     	System.out.println(boards.get(currPlayer).printPatternLines());
 //     	if(choices[2] != 5) {
 //     		for(Tile titi: boards.get(currPlayer).getPatternLines().get(choices[2])) {
 //			  if(titi != null)System.out.print(titi.toString() + ", ");
@@ -132,14 +132,6 @@ public class AzMain {
 //			  else System.out.print("n/a, ");
 //		  }
      	
-     	String temp = "";
-  	  for(Tile[] tisi: boards.get(currPlayer).getPatternLines()) {
-  		  for(Tile titi: tisi) {
-  			  if(titi != null)System.out.print(titi.toString() + ", ");
-  			  else System.out.print("n/a, ");
-       		}
-  		  System.out.println();
-  	  }
      	//System.out.println(boards.get(0).getPatternLines().get(0)[0].toString());
      }
      
