@@ -329,4 +329,25 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			}
 		}
 	}
+	
+	public void drawScoring (Graphics g) {
+		if(!end && !instructions && !pickFact && !pickPattern) {
+		int score = game.getCurr().getScore();
+		switch(game.getCurr()) {
+		case 1:
+		case 2:
+		case 3:
+		case 4:
+		}
+		
+		if(score > 100) {
+			switch(game.getCurr()) {
+			case 1: g.drawString("+100", 596, 68);
+			case 2: g.drawString("+100", 596, 68);
+			case 3: g.drawString("+100", 596, 68);
+			case 4: g.drawString("+100", 589, 887);
+			}
+		}
+	}
+	}
 }
