@@ -60,26 +60,26 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		choice = e. getKeyChar()-'0';
 		System.out.println(choice);
 		if(!start && pickFact && !pickPattern) {
-			System.out.println("hi");
+			//System.out.println("hi");
 			ArrayList<Integer> tiles = game.chooseFac(game.getSect());
 			if(choice == 1 && tiles.get(0) > 0) {
-				System.out.println(1 + "!");
+				//System.out.println(1 + "!");
 				game.changeChoices(0, 1, 0);
 				pickPattern = true;
 			}else if(choice == 2 && tiles.get(1) > 0) {
-				System.out.println(2 + "!");
+				//System.out.println(2 + "!");
 				game.changeChoices(0, 2, 0);
 				pickPattern = true;
 			}else if(choice == 3 && tiles.get(2) > 0) {
-				System.out.println(3 + "!");
+				//System.out.println(3 + "!");
 				game.changeChoices(0, 3, 0);
 				pickPattern = true;
 			}else if(choice == 4 && tiles.get(3) > 0) {
-				System.out.println(4 + "!");
+				//System.out.println(4 + "!");
 				game.changeChoices(0, 4, 0);
 				pickPattern = true;
 			}else if(choice == 5 && tiles.get(4) > 0) {
-				System.out.println(5 + "!");
+				//System.out.println(5 + "!");
 				game.changeChoices(0, 5, 0);
 				pickPattern = true;
 			}
@@ -147,36 +147,42 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			}
 			
 			if(!start && pickFact && pickPattern) {
-					if(x >= 862 && x <= 1294 && y >= 290 && y <= 361) {
+					if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 290*(getHeight()/972.0) && y <= 361*(getHeight()/972.0)) {
 						//System.out.println(1);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,1);
-					}else if(x >= 862 && x <= 1294 && y >= 373 && y <= 442) {
+						game.useChoices();
+					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 373*(getHeight()/972.0) && y <= 442*(getHeight()/972.0)) {
 						//System.out.println(2);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,2);
-					}else if(x >= 862 && x <= 1294 && y >= 453 && y <= 521) {
+						game.useChoices();
+					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 453*(getHeight()/972.0) && y <= 521*(getHeight()/972.0)) {
 						//System.out.println(3);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,3);
-					}else if(x >= 862 && x <= 1294 && y >= 536 && y <= 605) {
+						game.useChoices();
+					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 536*(getHeight()/972.0) && y <= 605*(getHeight()/972.0)) {
 						//System.out.println(4);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,4);
-					}else if(x >= 862 && x <= 1294 && y >= 617 && y <= 690) {
+						game.useChoices();
+					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 617 && y <= 690) {
 						//System.out.println(5);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,5);
-					}else if(x >= 862 && x <= 1294 && y >= 709 && y <= 770) {
+						game.useChoices();
+					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 709 && y <= 770) {
 						//System.out.println(6);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,6);
+						game.useChoices();
 					}
 			}
 		
@@ -316,7 +322,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		if(tempChose != 4) g.drawImage(noPat, (int)(472*(getWidth()/1775.0)), (int)(682*(getHeight()/972.0)), (int)(310*(getWidth()/1775.0)), (int)(90*(getHeight()/972.0)), null);
 		
 		//Current tiles of current player
-		ArrayList<String[]> tempWall = game.getPlayerBoard(game.getCurr()).getPatternLines();
+		ArrayList<Tile[]> tempWall = game.getPlayerBoard(game.getCurr()).getPatternLines();
 		for(int i = 0; i < tempWall.size(); i++) {
 			for(int j = 0; j < tempWall.get(i).length; j++) {
 				

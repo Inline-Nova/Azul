@@ -34,6 +34,32 @@ public class factoryDisplay
 	  return factories.get(sect); //wf
   }
   
+  public ArrayList<Tile> moveTiles(int sect, Tile til){
+	  System.out.println("moveTiles");
+	  ArrayList<Tile> tiles = new ArrayList<>();
+	  if(sect != 9) {
+		  for(Tile ti: factories.get(sect)) {
+			  if(ti.toString().equals(til.toString())) {
+				  tiles.add(ti);
+			  }else {
+				  factories.get(9).add(til);
+			  }
+		  }
+		  factories.get(sect).clear();
+	  }else {
+		  ListIterator<Tile> iter = factories.get(9).listIterator();
+		  Tile temp;
+		  while(iter.hasNext()) {
+			  temp = iter.next();
+			  if(temp.toString().equals(til.toString())) {
+				  tiles.add(temp);
+				  iter.remove();
+			  }
+		  }
+	  }
+	  return tiles;
+  }
+  
   public void setCoords(){
 	  int[][][] coords = { {{867, 150},{917, 150}, {867, 200}, {917, 200}}, 
 			  {{1070, 225}, {1120, 225}, {1070, 275}, {1120, 275}},

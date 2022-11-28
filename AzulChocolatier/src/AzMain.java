@@ -18,17 +18,20 @@ public class AzMain {
 		boards.add(new playerBoard()); //idx 3 bottom right
 		
 		currPlayer = (int)(Math.random()*4);
-		System.out.println("Curr player: " + currPlayer);
+		//System.out.println("Curr player: " + currPlayer);
 		//set number for whoever has starting tile
 		bag = new Bag();
 		discarded = new Discarded();
 		factories = new factoryDisplay(bag, discarded);
+		
+		
+		System.out.println(boards.get(0).printPatternLines());
 	}
 	
 	public void changeChoices(int sect, int tile, int row) {
 		if(sect != 0) choices[0] = sect-1; //0-10 factories or mid
-		if(tile != 0) choices[1] = tile-1; //0-4
-		if(row != 0) choices[2] = row-1; //0-4
+		if(tile != 0) choices[1] = tile-1; //0-4 color choosen
+		if(row != 0) choices[2] = row-1; //0-4 row choosen
 	}
 	
 	public playerBoard getPlayerBoard(int player) {
@@ -77,7 +80,7 @@ public class AzMain {
 	}
     
     
-     public ArrayList<Boolean> chooseTile(String color)
+     public ArrayList<Boolean> chooseTile(String color) //I don't fully understand what this does
     {
     	ArrayList<Boolean> check = new ArrayList<Boolean>();
     	//gets the playerBoard of currPlayer
@@ -99,6 +102,47 @@ public class AzMain {
     	return check;
     }
     
+     public void useChoices() { //method needs to move the tiles from the factory (or middle) to where ever
+     	ArrayList<Integer> tiles = chooseFac(getSect()); //how many of each color in choosen fact
+     	//need to move choosen Tiles to Pattern Lines
+     	
+     	System.out.println("useChoices");
+     	ArrayList<Tile> tis = new ArrayList<>();
+     	int tilesNum = 0;
+     	
+     	if(choices[1] == 0) tis = factories.moveTiles(choices[0], new Tile("black"));
+     	else if(choices[1] == 1) tis = factories.moveTiles(choices[0], new Tile("blue"));
+     	else if(choices[1] == 2) tis = factories.moveTiles(choices[0], new Tile("brown"));
+     	else if(choices[1] == 3) tis = factories.moveTiles(choices[0], new Tile("red"));
+     	else if(choices[1] == 4) tis = factories.moveTiles(choices[0], new Tile("white"));
+     	
+     	System.out.println(tis.toString());
+     	boards.get(currPlayer).addToPatternLines(tis, choices[2]);
+     	System.out.println(boards.get(0).printPatternLines());
+//     	if(choices[2] != 5) {
+//     		for(Tile titi: boards.get(currPlayer).getPatternLines().get(choices[2])) {
+//			  if(titi != null)System.out.print(titi.toString() + ", ");
+//			  else System.out.print("n/a, ");
+//     		}
+//     	}
+     	
+//     	System.out.println();
+//     	for(Tile tit: boards.get(currPlayer).getFloorLine()) {
+//			  if(tit != null)System.out.print(tit.toString() + ", ");
+//			  else System.out.print("n/a, ");
+//		  }
+     	
+     	String temp = "";
+  	  for(Tile[] tisi: boards.get(currPlayer).getPatternLines()) {
+  		  for(Tile titi: tisi) {
+  			  if(titi != null)System.out.print(titi.toString() + ", ");
+  			  else System.out.print("n/a, ");
+       		}
+  		  System.out.println();
+  	  }
+     	//System.out.println(boards.get(0).getPatternLines().get(0)[0].toString());
+     }
+     
     public void newRound()
     {
     	factories.fillFactories(bag, discarded);
