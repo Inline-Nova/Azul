@@ -113,11 +113,14 @@ public class playerBoard
 	  }
   }
   public void checkCompleteSet() {
-	  int cnt = 0;
-	  for (int i = 0; i < patternLines.size(); i++) {
-		  cnt++;
-		  for (int j = cnt; j < patternLines.get(j).length; j++) {
-				  
+	  for (int cnt = 0; cnt < 5; cnt++) {
+		  int num = 0;
+		  for (int i = 0; i < patternLines.size(); i++) {
+			  for (int j = 0; j < patternLines.get(j).length; j++) {
+				  if () {
+					  
+				  }
+			  }
 		  }
 	  }
   }
