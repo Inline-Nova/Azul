@@ -124,7 +124,17 @@ public class playerBoard
 		  }
 	  }
   }
+	
+ public int checkHorAdj()
+  {
+	  return 0;
+  }
   
+  public int checkVertAdj()
+  {
+	  return 0;
+  }
+	
   public void setCoordsPat(int curr) {
 	  int[][][] coords = {};
 	  if(curr == 0) { //30x30 for pat &  24x24
