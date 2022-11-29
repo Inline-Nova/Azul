@@ -30,7 +30,11 @@ public class AzMain {
 	
 	public void changeChoices(int sect, int tile, int row) {
 		if(sect != 0) choices[0] = sect-1; //0-10 factories or mid
-		if(tile != 0) choices[1] = tile-1; //0-4 color choosen
+		if(tile != 0) {
+			//System.out.println("hiya");
+			choices[1] = tile-1; //0-4 color choosen
+			checkPats();
+		}
 		if(row != 0) choices[2] = row-1; //0-4 row choosen
 	}
 	
@@ -80,37 +84,55 @@ public class AzMain {
 	}
     
     
-        public ArrayList<Boolean> checkPat(String color) //returns arraylist of boolean if tile can go in the pattern lines
+        public ArrayList<Boolean> checkPats() //returns arraylist of boolean if tile can go in the pattern lines
     {
+        	//System.out.println("HIYA");
+    	String color = "";
+		//shade sections that can't be choosen
+		if(getTile() == 0) 
+			color = "black";
+		else if(getTile() == 1) 
+			color = "blue";
+		else if(getTile() == 2) 
+			color = "brown";
+		else if(getTile() == 3) 
+			color = "red";
+		else if(getTile() == 4) 
+			color = "white";
     	Tile t = new Tile(color);
     	ArrayList<Boolean> check = new ArrayList<Boolean>();
     	//gets the playerBoard of currPlayer
-    	playerBoard currentPlayer = new playerBoard();
-    	currentPlayer = boards.get(currPlayer);
     	
-    	ArrayList<TreeSet<Tile>> wall = currentPlayer.getWall();
-    	for(int i = 0; i < 5; i++)
-    	{
-    		if(wall.get(i).contains(t))
-    		{
-    			check.add(false);
-    		}
-    		else
-    		{
-    			check.add(true);
+    	ArrayList<TreeSet<Tile>> wall = boards.get(currPlayer).getWall();
+//    	for(int i = 0; i < 5; i++)
+//    	{
+//    		if(wall.get(i).contains(t))
+//    		{
+//    			check.add(false);
+//    		}
+//    		else
+//    		{
+//    			check.add(true);
+//    		}
+//    	}
+    	ArrayList<Tile[]> patternLines = boards.get(currPlayer).getPatternLines();
+    	
+    	for(int i = 0; i < 5; i++) {
+    		check.add(true);
+    		for(int j = 0; i < wall.get(i).size(); j++) {
+    			if(!wall.get(i).toString().equals(t.toString()) || (!(patternLines.get(i)[0] == null) && !patternLines.get(i)[0].toString().equals(t.toString()))) 
+    				check.set(i, false);
     		}
     	}
     	
-    	ArrayList<Tile[]> patternLines = currentPlayer.getPatternLines();
-    	for(int i = 0; i < 5; i++)
-    	{
-    		if(!(patternLines.get(i)[0] == null || patternLines.get(i)[0].equals(t))) //array does not have contain method
-    		{
-    			check.set(i, false);
-    		}
-    	}
+    	
+    	
     	return check;
     }
+
+	public Boolean checkRow(int r) {
+		return this.checkPats().get(r);
+	}
     
      public void useChoices() { //method needs to move the tiles from the factory (or middle) to where ever
      	ArrayList<Integer> tiles = chooseFac(getSect()); //how many of each color in choosen fact

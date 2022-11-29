@@ -386,15 +386,15 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			for(Tile ti: tis) {
 				if(ti!= null) {
 					if(ti.toString().equals("black"))
-						g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+						g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(58*(getWidth()/1775.0)), (int)(58*(getHeight()/972.0)),null);
 					else if(ti.toString().equals("blue"))
-						g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+						g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(58*(getWidth()/1775.0)), (int)(58*(getHeight()/972.0)),null);
 					else if(ti.toString().equals("brown"))
-						g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+						g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(58*(getWidth()/1775.0)), (int)(58*(getHeight()/972.0)),null);
 					else if(ti.toString().equals("red"))
-						g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+						g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(58*(getWidth()/1775.0)), (int)(58*(getHeight()/972.0)),null);
 					else if(ti.toString().equals("white"))
-						g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+						g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(58*(getWidth()/1775.0)), (int)(58*(getHeight()/972.0)),null);
 				}
 			}
 		}
@@ -416,6 +416,17 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 
 			}
 			
+		}
+		
+		for(Boolean bo: game.checkPats()) {
+			System.out.println(bo + ", ");
+		}
+		
+		//coords (862, 290) - 373
+		for(int i = 0; i < 5; i++) {
+			//System.out.println("Check: " + game.checkRow(i));
+			if(!game.checkRow(i))
+				g.drawImage(noPat, 862, 289 + (82*i), 434, 72, null);
 		}
 	}
 	
