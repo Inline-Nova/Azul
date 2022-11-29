@@ -105,42 +105,45 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				start = false;
 			}
 			if(!start && !pickFact && !pickPattern) {
-				if(x>835*(getWidth()/1775.0) && x<985*(getWidth()/1775.0) && y>117*(getHeight()/972.0) && y<267*(getHeight()/972.0)) {
+				if(game.getFactories().getSectTiles(0).size()>0 && x>835*(getWidth()/1775.0) && x<985*(getWidth()/1775.0) && y>117*(getHeight()/972.0) && y<267*(getHeight()/972.0)) {
 					//System.out.println("1");
 					pickFact = true;
 					game.changeChoices(1, 0, 0);
-				}else if(x>1037*(getWidth()/1775.0) && x<1187*(getWidth()/1775.0) && y>193*(getHeight()/972.0) && y<343*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(1).size()>0 && x>1037*(getWidth()/1775.0) && x<1187*(getWidth()/1775.0) && y>193*(getHeight()/972.0) && y<343*(getHeight()/972.0)) {
 					//System.out.println("2");
 					pickFact = true;
 					game.changeChoices(2, 0, 0);
-				}else if(x>1099*(getWidth()/1775.0) && x<1249*(getWidth()/1775.0) && y>375*(getHeight()/972.0) && y<525*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(2).size()>0 && x>1099*(getWidth()/1775.0) && x<1249*(getWidth()/1775.0) && y>375*(getHeight()/972.0) && y<525*(getHeight()/972.0)) {
 					//System.out.println("3");
 					pickFact = true;
 					game.changeChoices(3, 0, 0);
-				}else if(x>1075*(getWidth()/1775.0) && x<1225*(getWidth()/1775.0) && y>562*(getHeight()/972.0) && y<712*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(3).size()>0 && x>1075*(getWidth()/1775.0) && x<1225*(getWidth()/1775.0) && y>562*(getHeight()/972.0) && y<712*(getHeight()/972.0)) {
 					//System.out.println("4");
 					pickFact = true;
 					game.changeChoices(4, 0, 0);
-				}else if(x>907*(getWidth()/1775.0) && x<1057*(getWidth()/1775.0) && y>670*(getHeight()/972.0) && y<820*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(4).size()>0 && x>907*(getWidth()/1775.0) && x<1057*(getWidth()/1775.0) && y>670*(getHeight()/972.0) && y<820*(getHeight()/972.0)) {
 					//System.out.println("5");
 					pickFact = true;
 					game.changeChoices(5, 0, 0);
-				}else if(x>711*(getWidth()/1775.0) && x<861*(getWidth()/1775.0) && y>672*(getHeight()/972.0) && y<822*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(5).size()>0 && x>711*(getWidth()/1775.0) && x<861*(getWidth()/1775.0) && y>672*(getHeight()/972.0) && y<822*(getHeight()/972.0)) {
 					//System.out.println("6");
 					pickFact = true;
 					game.changeChoices(6, 0, 0);
-				}else if(x>563*(getWidth()/1775.0) && x<713*(getWidth()/1775.0) && y>531*(getHeight()/972.0) && y<681*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(6).size()>0 && x>563*(getWidth()/1775.0) && x<713*(getWidth()/1775.0) && y>531*(getHeight()/972.0) && y<681*(getHeight()/972.0)) {
 					//System.out.println("7");
 					pickFact = true;
 					game.changeChoices(7, 0, 0);
-				}else if(x>540*(getWidth()/1775.0) && x<690*(getWidth()/1775.0) && y>340*(getHeight()/972.0) && y<490*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(7).size()>0 && x>540*(getWidth()/1775.0) && x<690*(getWidth()/1775.0) && y>340*(getHeight()/972.0) && y<490*(getHeight()/972.0)) {
 					//System.out.println("8");
 					pickFact = true;
 					game.changeChoices(8, 0, 0);
-				}else if(x>633*(getWidth()/1775.0) && x<783*(getWidth()/1775.0) && y>173*(getHeight()/972.0) && y<323*(getHeight()/972.0)) {
+				}else if(game.getFactories().getSectTiles(8).size()>0 && x>633*(getWidth()/1775.0) && x<783*(getWidth()/1775.0) && y>173*(getHeight()/972.0) && y<323*(getHeight()/972.0)) {
 					//System.out.println("9");
 					pickFact = true;
 					game.changeChoices(9, 0, 0);
+				}else if(game.getFactories().getSectTiles(9).size()>0 && x>744*(getWidth()/1775.0) && x<1060*(getWidth()/1775.0) && y>340*(getHeight()/972.0) && y<560*(getHeight()/972.0)) {
+					pickFact = true;
+					game.changeChoices(10, 0, 0);
 				}
 				//add mouse lister stuff for all factories
 				//once fact is choosen 
@@ -171,13 +174,13 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 						pickPattern = false;
 						game.changeChoices(0,0,4);
 						game.useChoices();
-					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 617 && y <= 690) {
+					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 617*(getHeight()/972.0) && y <= 690*(getHeight()/972.0)) {
 						//System.out.println(5);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,5);
 						game.useChoices();
-					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 709 && y <= 770) {
+					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 709*(getHeight()/972.0) && y <= 770*(getHeight()/972.0)) {
 						//System.out.println(6);
 						pickFact = false;
 						pickPattern = false;
@@ -225,7 +228,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			g.drawImage(closeInstr, (int)(705*(getWidth()/1775.0)), (int)(856*(getHeight()/972.0)), (int)(393*(getWidth()/1775.0)), (int)(65*(getHeight()/972.0)), null);
 		}
 		//g.drawImage(ref2, 0, 0, getWidth(), getHeight(), null);
-		
+		//g.drawImage(pickPat, (int)(830*(getWidth()/1775.0)), (int)(202*(getHeight()/972.0)), (int)(500*(getWidth()/1775.0)), (int)(596*(getHeight()/972.0)), null);
 	}
 	
 	public void drawTiles(Graphics g) {
@@ -233,7 +236,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		ArrayList<ArrayList<Tile>> tempFact = game.getFactories().getFactories();
 		//System.out.println(tempFact.toString());
 		for(int i = 0; i < 9; i++) {
-			ArrayList<Tile> sect = tempFact.get(i);
+			ArrayList<Tile> sect = tempFact.get(i); //in the factories
 			for(Tile ti: sect) {
 				if(ti.toString().equals("black")){
 					g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)), null);
@@ -248,10 +251,65 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				}
 			}
 		}
-		//g.drawImage(tileBlu, tempFact.get(0).get(0).getX(), tempFact.get(0).get(0).getY(), 30, 30, null);
-		//g.drawImage(tileBlu, tempFact.get(0).get(1).getX(), tempFact.get(0).get(1).getY(), 30, 30, null);
-		//g.drawImage(tileBlu, tempFact.get(0).get(2).getX(), tempFact.get(0).get(2).getY(), 30, 30, null);
-		//g.drawImage(tileBlu, tempFact.get(0).get(3).getX(), tempFact.get(0).get(3).getY(), 30, 30, null);
+		
+		//on the player board
+			for(int i = 0; i < 4; i++) {
+				ArrayList<Tile[]> tempPat = game.getPlayerBoard(i).getPatternLines();
+				for(Tile[] tis: tempPat) {
+					for(Tile ti: tis) {
+						if(ti!= null) {
+							if(ti.toString().equals("black"))
+								g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+							else if(ti.toString().equals("blue"))
+								g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+							else if(ti.toString().equals("brown"))
+								g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+							else if(ti.toString().equals("red"))
+								g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+							else if(ti.toString().equals("white"))
+								g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+						}
+						
+					}
+				}
+			}
+		
+		//for floorLine
+			for(Tile ti: game.getPlayerBoard(game.getCurr()).getFloorLine()) {
+				if(ti!= null) {
+					if(ti.toString().equals("black"))
+						g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("blue"))
+						g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("brown"))
+						g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("red"))
+						g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("white"))
+						g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("one"))
+						g.drawImage(tileOne, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+
+				}
+				
+			}
+			
+		//for midddle
+			for(Tile ti: game.getFactories().getSectTiles(9)) {
+				if(ti.toString().equals("black"))
+					g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("blue"))
+					g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("brown"))
+					g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("red"))
+					g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("white"))
+					g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+			}
+			
+			
+		
 	}
 	
 	public void drawEndScr(Graphics g) {
@@ -275,9 +333,9 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		if(game.getCurr() == 0) {
 			g.drawImage(choco, (int)(491*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}else if(game.getCurr() == 1){
-			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
-		}else if(game.getCurr() == 2){
 			g.drawImage(choco, (int)(491*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
+		}else if(game.getCurr() == 2){
+			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}else if(game.getCurr() == 3){
 			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}
@@ -322,17 +380,48 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		if(tempChose != 4) g.drawImage(noPat, (int)(472*(getWidth()/1775.0)), (int)(682*(getHeight()/972.0)), (int)(310*(getWidth()/1775.0)), (int)(90*(getHeight()/972.0)), null);
 		
 		//Current tiles of current player
-		ArrayList<Tile[]> tempWall = game.getPlayerBoard(game.getCurr()).getPatternLines();
-		for(int i = 0; i < tempWall.size(); i++) {
-			for(int j = 0; j < tempWall.get(i).length; j++) {
-				
+		playerBoard tempPat = game.getPlayerBoard(game.getCurr());
+		tempPat.setCoordsPatPick();
+		for(Tile[] tis: tempPat.getPatternLines()) {
+			for(Tile ti: tis) {
+				if(ti!= null) {
+					if(ti.toString().equals("black"))
+						g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("blue"))
+						g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("brown"))
+						g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("red"))
+						g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+					else if(ti.toString().equals("white"))
+						g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(60*(getWidth()/1775.0)), (int)(60*(getHeight()/972.0)),null);
+				}
 			}
+		}
+		
+		for(Tile ti: tempPat.getFloorLine()) {
+			if(ti!= null) {
+				if(ti.toString().equals("black"))
+					g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(44*(getWidth()/1775.0)), (int)(44*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("blue"))
+					g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(44*(getWidth()/1775.0)), (int)(44*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("brown"))
+					g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(44*(getWidth()/1775.0)), (int)(44*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("red"))
+					g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(44*(getWidth()/1775.0)), (int)(44*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("white"))
+					g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(44*(getWidth()/1775.0)), (int)(44*(getHeight()/972.0)),null);
+				else if(ti.toString().equals("one"))
+					g.drawImage(tileOne, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(44*(getWidth()/1775.0)), (int)(44*(getHeight()/972.0)),null);
+
+			}
+			
 		}
 	}
 	
 	public void drawScoring (Graphics g) {
 		if(!end && !instructions && !pickFact && !pickPattern) {
-		int score = game.getCurr().getScore();
+		int score = game.getPlayerBoard(game.getCurr()).getScore();
 		switch(game.getCurr()) {
 		case 1:
 		case 2:

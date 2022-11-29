@@ -13,14 +13,16 @@ public class factoryDisplay
   
   public void fillFactories(Bag bag, Discarded dis)
   {
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < 9; i++)
 	{
 		if(bag.getTiles().isEmpty())
 		{
 			bag.refill(dis);
 		}
 		factories.add(bag.getNewFacTiles()); //Bag class needs to be finished
+		
 	}
+	factories.add(new ArrayList<Tile>());
   }
   
   
@@ -35,14 +37,13 @@ public class factoryDisplay
   }
   
   public ArrayList<Tile> moveTiles(int sect, Tile til){
-	  System.out.println("moveTiles");
 	  ArrayList<Tile> tiles = new ArrayList<>();
-	  if(sect != 9) {
+	  if(sect != 9) { 
 		  for(Tile ti: factories.get(sect)) {
 			  if(ti.toString().equals(til.toString())) {
 				  tiles.add(ti);
 			  }else {
-				  factories.get(9).add(til);
+				  factories.get(9).add(ti);
 			  }
 		  }
 		  factories.get(sect).clear();
@@ -73,6 +74,25 @@ public class factoryDisplay
 	  for(int i = 0; i < 9/*factories.size()*/; i++) {
 		  for(int j = 0; j < 4/*factories.get(0).size()*/; j++) {
 			  factories.get(i).get(j).changeCoords(coords[i][j][0], coords[i][j][1]);
+		  }
+	  }
+	 
+  }
+  
+  public void setCoordsMid(){
+	//coords for middle
+	  int[] midCoord = {760, 360};
+	  for(int i = 0; i < factories.get(9).size(); i++){
+		  if(i < 7) {
+			  factories.get(9).get(i).changeCoords(760 + (i*40), 360);
+		  }else if(i < 14) {
+			  factories.get(9).get(i).changeCoords(760 + ((i-7)*40), 405);
+		  }else if(i < 21) {
+			  factories.get(9).get(i).changeCoords(760 + ((i-14)*40), 450);
+		  }else if(i < 28){
+			  factories.get(9).get(i).changeCoords(760 + ((i-21)*40), 495);
+		  }else if(i < 35) {
+			  factories.get(9).get(i).changeCoords(760 + ((i-28)*40), 540);
 		  }
 	  }
   }

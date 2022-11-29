@@ -18,7 +18,7 @@ public class AzMain {
 		boards.add(new playerBoard()); //idx 3 bottom right
 		
 		currPlayer = (int)(Math.random()*4);
-		//System.out.println("Curr player: " + currPlayer);
+		System.out.println("Curr player: " + currPlayer);
 		//set number for whoever has starting tile
 		bag = new Bag();
 		discarded = new Discarded();
@@ -80,7 +80,7 @@ public class AzMain {
 	}
     
     
-        public ArrayList<Boolean> chooseTile(String color) //returns arraylist of boolean if tile can go in the pattern lines
+        public ArrayList<Boolean> checkPat(String color) //returns arraylist of boolean if tile can go in the pattern lines
     {
     	Tile t = new Tile(color);
     	ArrayList<Boolean> check = new ArrayList<Boolean>();
@@ -104,13 +104,9 @@ public class AzMain {
     	ArrayList<Tile[]> patternLines = currentPlayer.getPatternLines();
     	for(int i = 0; i < 5; i++)
     	{
-    		//if(patternLines.get(i).contains(t)) //array does not have contain method
+    		if(!(patternLines.get(i)[0] == null || patternLines.get(i)[0].equals(t))) //array does not have contain method
     		{
     			check.set(i, false);
-    		}
-    		else
-    		{
-    			check.set(i, true);
     		}
     	}
     	return check;
@@ -133,6 +129,10 @@ public class AzMain {
      	System.out.println(tis.toString());
      	boards.get(currPlayer).addToPatternLines(tis, choices[2]);
      	System.out.println(boards.get(currPlayer).printPatternLines());
+     	
+     	boards.get(currPlayer).setCoordsPat(currPlayer);
+     	System.out.println("facts: " + factories.getSectTiles(9).toString());
+     	factories.setCoordsMid();
 //     	if(choices[2] != 5) {
 //     		for(Tile titi: boards.get(currPlayer).getPatternLines().get(choices[2])) {
 //			  if(titi != null)System.out.print(titi.toString() + ", ");
