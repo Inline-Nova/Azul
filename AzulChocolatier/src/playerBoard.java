@@ -118,7 +118,7 @@ public class playerBoard
 		  for (int i = 0; i < patternLines.size(); i++) {
 			  for (int j = 0; j < patternLines.get(j).length; j++) {
 				  if () {
-					  
+					  // idk how to get the color of the tiles
 				  }
 			  }
 		  }
