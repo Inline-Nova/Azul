@@ -431,22 +431,34 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	}
 	
 	public void drawScoring (Graphics g) {
-		if(!end && !instructions && !pickFact && !pickPattern) {
 		int score = game.getPlayerBoard(game.getCurr()).getScore();
-		switch(game.getCurr()) {
-		case 1:
-		case 2:
-		case 3:
-		case 4:
-		}
+		
+
 		
 		if(score > 100) {
 			switch(game.getCurr()) {
+			case 0: g.drawString("+100", 596, 68);
 			case 1: g.drawString("+100", 596, 68);
 			case 2: g.drawString("+100", 596, 68);
-			case 3: g.drawString("+100", 596, 68);
-			case 4: g.drawString("+100", 589, 887);
+			case 3: g.drawString("+100", 589, 887);
 			}
+		}
+		
+		switch(game.getCurr()) {
+		case 0: 
+			int x = 74;
+			int y = 62;
+				for(int i = 0; i < score; i++) {
+					if(i%20 == 1) {
+						y+=19;
+						x-=364;
+					}
+					x+=10;
+				}
+			g.drawRect(x, y, 10, 10);
+		case 1: 
+		case 2:
+		case 3:
 		}
 	}
 	}
