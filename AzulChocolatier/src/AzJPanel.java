@@ -58,7 +58,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	public void keyReleased(KeyEvent e) {}
 	public void keyTyped(KeyEvent e) {
 		choice = e. getKeyChar()-'0';
-		System.out.println(choice);
+		//System.out.println(choice);
 		if(!start && pickFact && !pickPattern) {
 			//System.out.println("hi");
 			ArrayList<Integer> tiles = game.chooseFac(game.getSect());
@@ -82,7 +82,8 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				//System.out.println(5 + "!");
 				game.changeChoices(0, 5, 0);
 				pickPattern = true;
-			}
+			}else
+				game.getPlayerBoard(game.getCurr()).setCoordsPat(game.getCurr());
 		}
 		repaint();
 	}
@@ -144,37 +145,38 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				}else if(game.getFactories().getSectTiles(9).size()>0 && x>744*(getWidth()/1775.0) && x<1060*(getWidth()/1775.0) && y>340*(getHeight()/972.0) && y<560*(getHeight()/972.0)) {
 					pickFact = true;
 					game.changeChoices(10, 0, 0);
-				}
+				}else
+					repaint();
 				//add mouse lister stuff for all factories
 				//once fact is choosen 
 			}
 			
 			if(!start && pickFact && pickPattern) {
-					if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 290*(getHeight()/972.0) && y <= 361*(getHeight()/972.0)) {
+					if(game.checkRow(0) && x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 290*(getHeight()/972.0) && y <= 361*(getHeight()/972.0)) {
 						//System.out.println(1);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,1);
 						game.useChoices();
-					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 373*(getHeight()/972.0) && y <= 442*(getHeight()/972.0)) {
+					}else if(game.checkRow(1) && x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 373*(getHeight()/972.0) && y <= 442*(getHeight()/972.0)) {
 						//System.out.println(2);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,2);
 						game.useChoices();
-					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 453*(getHeight()/972.0) && y <= 521*(getHeight()/972.0)) {
+					}else if(game.checkRow(2) && x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 453*(getHeight()/972.0) && y <= 521*(getHeight()/972.0)) {
 						//System.out.println(3);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,3);
 						game.useChoices();
-					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 536*(getHeight()/972.0) && y <= 605*(getHeight()/972.0)) {
+					}else if(game.checkRow(3) && x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 536*(getHeight()/972.0) && y <= 605*(getHeight()/972.0)) {
 						//System.out.println(4);
 						pickFact = false;
 						pickPattern = false;
 						game.changeChoices(0,0,4);
 						game.useChoices();
-					}else if(x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 617*(getHeight()/972.0) && y <= 690*(getHeight()/972.0)) {
+					}else if(game.checkRow(4) && x >= 862*(getWidth()/1775.0) && x <= 1294*(getWidth()/1775.0) && y >= 617*(getHeight()/972.0) && y <= 690*(getHeight()/972.0)) {
 						//System.out.println(5);
 						pickFact = false;
 						pickPattern = false;
@@ -186,14 +188,15 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 						pickPattern = false;
 						game.changeChoices(0,0,6);
 						game.useChoices();
-					}
+					}else
+						game.getPlayerBoard(game.getCurr()).setCoordsPat(game.getCurr());
+				
 			}
 		
 			//for instructions
 			if(x >= 715*(getWidth()/1775.0) && x <= 1089*(getWidth()/1775.0) && y <= 907*(getHeight()/972.0) && y >= 860*(getHeight()/972.0))
 				instructions = !instructions;
 		}
-		
 		//if(x >= 715 && x <= 1089 && y <= 907 && y >= 860)
 			//instructions = !instructions;
 	}
@@ -216,6 +219,7 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			drawTiles(g);
 			drawPlayerBoards(g);
 			if((pickFact)) {
+				drawTiles(g);
 				drawPickFact(g);
 				if(pickPattern) {
 					drawPickRow(g);
@@ -258,16 +262,17 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				for(Tile[] tis: tempPat) {
 					for(Tile ti: tis) {
 						if(ti!= null) {
-							if(ti.toString().equals("black"))
+							if(ti.toString().equals("black")) {
 								g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
-							else if(ti.toString().equals("blue"))
+							}else if(ti.toString().equals("blue")) {
 								g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
-							else if(ti.toString().equals("brown"))
+							}else if(ti.toString().equals("brown")) {
 								g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
-							else if(ti.toString().equals("red"))
+							}else if(ti.toString().equals("red")) {
 								g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
-							else if(ti.toString().equals("white"))
+							}else if(ti.toString().equals("white")) {
 								g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(35*(getWidth()/1775.0)), (int)(35*(getHeight()/972.0)),null);
+							}
 						}
 						
 					}
@@ -332,11 +337,11 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	public void drawPlayerBoards(Graphics g) {
 		if(game.getCurr() == 0) {
 			g.drawImage(choco, (int)(491*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
-		}else if(game.getCurr() == 1){
-			g.drawImage(choco, (int)(491*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
-		}else if(game.getCurr() == 2){
-			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}else if(game.getCurr() == 3){
+			g.drawImage(choco, (int)(491*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
+		}else if(game.getCurr() == 1){
+			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(96*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
+		}else if(game.getCurr() == 2){
 			g.drawImage(choco, (int)(1237*(getWidth()/1775.0)), (int)(828*(getHeight()/972.0)), (int)(50*(getWidth()/1775.0)), (int)(50*(getHeight()/972.0)), null);
 		}
 	}
@@ -418,15 +423,15 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			
 		}
 		
-		for(Boolean bo: game.checkPats()) {
-			System.out.println(bo + ", ");
-		}
+//		for(Boolean bo: game.checkPats()) {
+//			System.out.println(bo + ", ");
+//		}
 		
 		//coords (862, 290) - 373
 		for(int i = 0; i < 5; i++) {
 			//System.out.println("Check: " + game.checkRow(i));
 			if(!game.checkRow(i))
-				g.drawImage(noPat, 862, 289 + (82*i), 434, 72, null);
+				g.drawImage(noPat, (int)(862*(getWidth()/1775.0)), (int)((289 + (82*i))*(getHeight()/972.0)), (int)(434*(getWidth()/1775.0)), (int)(72*(getHeight()/972.0)), null);
 		}
 	}
 	
