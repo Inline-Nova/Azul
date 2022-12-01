@@ -113,15 +113,57 @@ public class playerBoard
 	  }
   }
   public void checkCompleteSet() {
-	  for (int cnt = 0; cnt < 5; cnt++) {
-		  int num = 0;
-		  for (int i = 0; i < patternLines.size(); i++) {
-			  for (int j = 0; j < patternLines.get(j).length; j++) {
-				  if () {
-					  // idk how to get the color of the tiles
-				  }
+	  int num = 0;
+	  for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("blue")) {
+				  num++;
 			  }
 		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;
+	  for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("black")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("red")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("white")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("brown")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
 	  }
   }
 	
