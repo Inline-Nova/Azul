@@ -25,7 +25,7 @@ public class AzMain {
 		factories = new factoryDisplay(bag, discarded);
 		
 		
-		System.out.println(boards.get(0).printPatternLines());
+		//System.out.println(boards.get(0).printPatternLines());
 	}
 	
 	public void changeChoices(int sect, int tile, int row) {
@@ -101,30 +101,22 @@ public class AzMain {
 			color = "white";
     	Tile t = new Tile(color);
     	ArrayList<Boolean> check = new ArrayList<Boolean>();
-    	//gets the playerBoard of currPlayer
-    	
-    	ArrayList<TreeSet<Tile>> wall = boards.get(currPlayer).getWall();
-//    	for(int i = 0; i < 5; i++)
-//    	{
-//    		if(wall.get(i).contains(t))
-//    		{
-//    			check.add(false);
-//    		}
-//    		else
-//    		{
-//    			check.add(true);
-//    		}
-//    	}
-    	ArrayList<Tile[]> patternLines = boards.get(currPlayer).getPatternLines();
     	
     	for(int i = 0; i < 5; i++) {
     		check.add(true);
-    		for(int j = 0; i < wall.get(i).size(); j++) {
-    			if(!wall.get(i).toString().equals(t.toString()) || (!(patternLines.get(i)[0] == null) && !patternLines.get(i)[0].toString().equals(t.toString()))) 
+    		for(int j = 0; i < boards.get(currPlayer).getWall().get(i).size(); j++) {
+    			if(!boards.get(currPlayer).getWall().get(i).toString().equals(t.toString())) 
     				check.set(i, false);
     		}
+    		if(boards.get(currPlayer).getPatternLines().get(i)[0] != null && !(boards.get(currPlayer).getPatternLines().get(i)[0].toString().equals(t.toString())))
+    			check.set(i, false);
+    		else if(boards.get(currPlayer).getPatternLines().get(i)[boards.get(currPlayer).getPatternLines().get(i).length-1] != null){
+    			check.set(i, false);
+    		}
     	}
-    	
+    	// || (!(patternLines.get(i)[0] == null) && !patternLines.get(i)[0].toString().equals(t.toString()))
+//    	System.out.println("Tile: " + t.toString());
+//    	System.out.println("Pat: " + boards.get(currPlayer).getPatternLines().get(0)[0]);
     	
     	
     	return check;
@@ -138,7 +130,7 @@ public class AzMain {
      	ArrayList<Integer> tiles = chooseFac(getSect()); //how many of each color in choosen fact
      	//need to move choosen Tiles to Pattern Lines
      	
-     	System.out.println("useChoices");
+     	//System.out.println("useChoices");
      	ArrayList<Tile> tis = new ArrayList<>();
      	int tilesNum = 0;
      	
@@ -148,12 +140,12 @@ public class AzMain {
      	else if(choices[1] == 3) tis = factories.moveTiles(choices[0], new Tile("red"));
      	else if(choices[1] == 4) tis = factories.moveTiles(choices[0], new Tile("white"));
      	
-     	System.out.println(tis.toString());
+     	//System.out.println(tis.toString());
      	boards.get(currPlayer).addToPatternLines(tis, choices[2]);
-     	System.out.println(boards.get(currPlayer).printPatternLines());
+     	//System.out.println(boards.get(currPlayer).printPatternLines());
      	
      	boards.get(currPlayer).setCoordsPat(currPlayer);
-     	System.out.println("facts: " + factories.getSectTiles(9).toString());
+     	//System.out.println("facts: " + factories.getSectTiles(9).toString());
      	factories.setCoordsMid();
 //     	if(choices[2] != 5) {
 //     		for(Tile titi: boards.get(currPlayer).getPatternLines().get(choices[2])) {
@@ -163,12 +155,16 @@ public class AzMain {
 //     	}
      	
 //     	System.out.println();
-//     	for(Tile tit: boards.get(currPlayer).getFloorLine()) {
-//			  if(tit != null)System.out.print(tit.toString() + ", ");
-//			  else System.out.print("n/a, ");
-//		  }
+     	for(Tile tit: boards.get(currPlayer).getFloorLine()) {
+			  if(tit != null)System.out.print(tit.toString() + ", ");
+			  else System.out.print("n/a, ");
+		  }
      	
+     	
+     	currPlayer++;
+     	if(currPlayer > 3) currPlayer = 0;
      	//System.out.println(boards.get(0).getPatternLines().get(0)[0].toString());
+     	
      }
      
     public void newRound()
