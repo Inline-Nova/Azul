@@ -145,8 +145,11 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 				}else if(game.getFactories().getSectTiles(9).size()>0 && x>744*(getWidth()/1775.0) && x<1060*(getWidth()/1775.0) && y>340*(getHeight()/972.0) && y<560*(getHeight()/972.0)) {
 					pickFact = true;
 					game.changeChoices(10, 0, 0);
-				}else
+				}else {
+					
 					repaint();
+				}
+					
 				//add mouse lister stuff for all factories
 				//once fact is choosen 
 			}
@@ -277,27 +280,33 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 						
 					}
 				}
-			}
-		
-		//for floorLine
-			for(Tile ti: game.getPlayerBoard(game.getCurr()).getFloorLine()) {
-				if(ti!= null) {
-					if(ti.toString().equals("black"))
-						g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
-					else if(ti.toString().equals("blue"))
-						g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
-					else if(ti.toString().equals("brown"))
-						g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
-					else if(ti.toString().equals("red"))
-						g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
-					else if(ti.toString().equals("white"))
-						g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
-					else if(ti.toString().equals("one"))
-						g.drawImage(tileOne, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+				
+				//for floorLine
+				for(Tile ti: game.getPlayerBoard(i).getFloorLine()) {
+					if(ti!= null) {
+						//System.out.println("hi?");
+						if(ti.toString().equals("black"))
+							
+							g.drawImage(tileBlk, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+						else if(ti.toString().equals("blue"))
+							g.drawImage(tileBlu, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+						else if(ti.toString().equals("brown"))
+							g.drawImage(tileBrw, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+						else if(ti.toString().equals("red"))
+							g.drawImage(tileRed, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+						else if(ti.toString().equals("white"))
+							g.drawImage(tileWyt, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
+						else if(ti.toString().equals("one"))
+							g.drawImage(tileOne, (int)(ti.getX()*(getWidth()/1775.0)), (int)(ti.getY()*(getHeight()/972.0)), (int)(27*(getWidth()/1775.0)), (int)(27*(getHeight()/972.0)),null);
 
+					}
+					
 				}
 				
 			}
+		
+		
+			
 			
 		//for midddle
 			for(Tile ti: game.getFactories().getSectTiles(9)) {
@@ -466,5 +475,5 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 		case 3:
 		}
 	}
-	}
 }
+

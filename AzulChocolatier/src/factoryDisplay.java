@@ -36,6 +36,17 @@ public class factoryDisplay
 	  return factories.get(sect); //wf
   }
   
+  public boolean allIsEmpty() {
+	  for(int i = 0; i < 9; i++)
+		{
+			if(!(factories.get(i).isEmpty()))
+			{
+				return false;
+			}
+		}
+	  return true;
+  }
+  
   public ArrayList<Tile> moveTiles(int sect, Tile til){
 	  ArrayList<Tile> tiles = new ArrayList<>();
 	  if(sect != 9) { 
