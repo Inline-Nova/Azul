@@ -445,10 +445,9 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	}
 	
 	public void drawScoring (Graphics g) {
-		int score = game.getPlayerBoard(game.getCurr()).getScore();
-		
-
-		
+		//int score = game.getPlayerBoard(game.getCurr()).getScore();
+		int score = 21;
+		System.out.println("score" + score);
 		if(score > 100) {
 			switch(game.getCurr()) {
 			case 0: g.drawString("+100", 596, 68);
@@ -457,11 +456,11 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 			case 3: g.drawString("+100", 589, 887);
 			}
 		}
-		
+		else
 		switch(game.getCurr()) {
 		case 0: 
-			int x = 74;
-			int y = 62;
+			int x = 80;
+			int y = 55;
 				for(int i = 0; i < score; i++) {
 					if(i%20 == 1) {
 						y+=19;
@@ -469,11 +468,48 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 					}
 					x+=10;
 				}
-			g.drawRect(x, y, 10, 10);
+			g.drawImage(tileSc, x, y, 20,20, null);
+			System.out.println("case0");
 		case 1: 
+			int a = 70;
+			int b = 55;
+				for(int i = 0; i < score; i++) {
+					if(i%20 == 1) {
+						b+=19;
+						a-=364;
+					}
+					a+=10;
+				}
+			g.drawImage(tileSc, a, b, 50, 50, null);
+			System.out.println("case1");
 		case 2:
+			int c = 70;
+			int d = 55;
+				for(int i = 0; i < score; i++) { 
+					if(i%20 == 1) {
+						d+=19;
+						c-=364;
+					}
+					c+=10;
+				}
+			g.drawImage(tileSc, c, d, 50, 50, null);
+			System.out.println("case2");
 		case 3:
+			int e = 70;
+			int f = 55;
+				for(int i = 0; i < score; i++) {
+					if(i%20 == 1) {
+						f+=19;
+						e-=364;
+					}
+					e+=10;
+				}
+			g.drawImage(tileSc, e, f, 50, 50, null);
+			System.out.println("case3");
 		}
 	}
+
 }
 
+	}
+	

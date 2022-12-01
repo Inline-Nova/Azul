@@ -124,15 +124,71 @@ public class playerBoard
 				  //if () {
 					  // idk how to get the color of the tiles - use toString()
 				  //}
+	  int num = 0;
+	  for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("blue")) {
+				  num++;
 			  }
 		  }
 	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;
+	  for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("black")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("red")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("white")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
+	  num = 0;for (Tile[] a: patternLines) {
+		  for (int i = 0; i < a.length; i++) {
+			  if (a[i].toString().equals("brown")) {
+				  num++;
+			  }
+		  }
+	  }
+	  if (num == 5) {
+		  score += 7;
+	  }
   }
 	
- public int checkHorAdj()
+ public void checkHorAdj()
   {
+	  //if patternline row is full, check HorAdj. if not, do nothing
+	  //discard all but one tile
+	  for(int i = 0; i < patternLines.size(); i++)
+	  {
+		  
+	  }
 	  return 0;
   }
+  
   
   public int checkVertAdj()
   {
