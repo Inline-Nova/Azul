@@ -164,8 +164,17 @@ public class AzMain {
      	currPlayer++;
      	if(currPlayer > 3) currPlayer = 0;
      	//System.out.println(boards.get(0).getPatternLines().get(0)[0].toString());
-     	
+     	if(getFactories().allIsEmpty()) {
+			System.out.println("empty");
+		}
      }
+     
+    public void score() {
+    	for(int i = 0; i < 4; i++) {
+    		//boards.get(i)
+    	}
+    	//factories.refill();
+    }
      
     public void newRound()
     {

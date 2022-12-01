@@ -25,21 +25,21 @@ public class playerBoard
   }
   
   public void addToPatternLines(ArrayList<Tile> tis, int row) {
-	  System.out.println("addToPatternLine");
-	  System.out.println(tis.toString());
+	  //System.out.println("addToPatternLine");
+	  //System.out.println(tis.toString());
 	  for(Tile ti: tis) {
-		  System.out.println("ti: " + ti.toString());
+		  //System.out.println("ti: " + ti.toString());
 		  Boolean placed = false;
 		  if(row != 5) {
 			  for(int i = 0; i < patternLines.get(row).length; i++) {
 				  if(patternLines.get(row)[i] == null) {
 					  patternLines.get(row)[i] = ti;
-					  System.out.println("hi " + patternLines.get(row).toString());
-					  for(Tile titi: patternLines.get(row)) {
-						  if(titi != null)System.out.print(titi.toString() + ", ");
-						  else System.out.print("n/a, ");
-					  }
-					  System.out.println();
+					  //System.out.println("hi " + patternLines.get(row).toString());
+//					  for(Tile titi: patternLines.get(row)) {
+//						  if(titi != null)System.out.print(titi.toString() + ", ");
+//						  else System.out.print("n/a, ");
+//					  }
+					  //System.out.println();
 					  placed = true;
 					  if(placed)break;
 				  }
@@ -51,9 +51,11 @@ public class playerBoard
 			  floorLine.add(ti);
 		  }
 	  }
+	  printPatternLines();
   }
   
   public String printPatternLines() {
+	  System.out.println();
 	  String temp = "";
 	  for(Tile[] tis: patternLines) {
 		  for(Tile titi: tis) {
@@ -62,6 +64,8 @@ public class playerBoard
      		}
 		  System.out.println();
 	  }
+	  System.out.println(floorLine.toString());
+	  System.out.println();
 	  return temp;
   }
   
@@ -113,6 +117,13 @@ public class playerBoard
 	  }
   }
   public void checkCompleteSet() {
+	  for (int cnt = 0; cnt < 5; cnt++) {
+		  int num = 0;
+		  for (int i = 0; i < patternLines.size(); i++) {
+			  for (int j = 0; j < patternLines.get(j).length; j++) {
+				  //if () {
+					  // idk how to get the color of the tiles - use toString()
+				  //}
 	  int num = 0;
 	  for (Tile[] a: patternLines) {
 		  for (int i = 0; i < a.length; i++) {
@@ -191,7 +202,7 @@ public class playerBoard
 				  {{219, 273}, {183, 273}, {145, 273}}, {{219, 309}, 
 					  {183, 309}, {145, 309}, {108, 309}}, 
 				  {{219, 345}, {183, 345}, {145, 345}, {108, 345}, {71, 345}}, 
-				  {{74, 420}, {116, 420}, {156, 420}, {198, 420}, {235, 420}, {278, 420}, {341, 420}}};
+				  {{74, 417}, {116, 417}, {156, 417}, {198, 417}, {235, 417}, {278, 417}, {341, 417}}};
 		  coords = temp;
 	  }else if(curr == 3) {
 		  int[][][] temp = {{{219,651}}, {{219, 689}, {183, 689}}, 
@@ -205,7 +216,7 @@ public class playerBoard
 				  {{1466, 273}, {1431, 273}, {1393, 273}}, 
 				  {{1466, 309}, {1431, 309}, {1393, 309}, {1356, 309}}, 
 				  {{1466, 345}, {1431, 345}, {1393, 345}, {1356, 345}, {1319, 345}}, 
-				  {{1320, 420}, {1363, 420}, {1405, 420}, {1443, 420}, {1481, 420}, {1524, 420}, {1564, 420}}};
+				  {{1320, 417}, {1363, 417}, {1405, 417}, {1443, 417}, {1481, 417}, {1524, 417}, {1564, 417}}};
 		  coords = temp;
 	  }else if(curr == 2) {
 		  int[][][] temp = {{{1466,651}}, {{1466, 689}, {1431, 689}}, 
@@ -223,9 +234,15 @@ public class playerBoard
 	  }
 	  for(int i = 0; i < floorLine.size(); i++) {
 		  if(i < 7) {
-			  floorLine.get(i).changeCoords(coords[5][i][0]+1, coords[5][i][1]+1);
+			  floorLine.get(i).changeCoords(coords[5][i][0], coords[5][i][1]);
 		  }
 	  }
+	  System.out.println("\n FloorLine");
+	  for(int i = 0; i < floorLine.size(); i++) {
+		  System.out.print("(" + floorLine.get(i).getX() + ", " + floorLine.get(i).getY() + "), ");
+	  }
+	  System.out.println();
+	  System.out.println();
   }
   
   public void setCoordsPatPick(){
