@@ -167,10 +167,17 @@ public class playerBoard
 	  }
   }
 	
- public int checkHorAdj()
+ public void checkHorAdj()
   {
+	  //if patternline row is full, check HorAdj. if not, do nothing
+	  //discard all but one tile
+	  for(int i = 0; i < patternLines.size(); i++)
+	  {
+		  
+	  }
 	  return 0;
   }
+  
   
   public int checkVertAdj()
   {
