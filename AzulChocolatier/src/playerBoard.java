@@ -202,6 +202,31 @@ public class playerBoard
 //	  }
 //	 return count;
 //  }
+
+ public int checkHorAdj()
+  {
+	 int count = 0;
+	 ListIterator<Tile> iter;
+	  //if patternline row is full, check HorAdj. if not, do nothing
+	  //discard all but one tile
+	  for(int i = 0; i < patternLines.size(); i++)
+	  {
+		  Tile[] row = patternLines.get(i);
+		  if(!row[row.length - 1].isEmpty())
+		  {
+			  //patternline row is full
+			  Tile newlyAddedTile = row[0];
+			  //add tile to wall (see pic for reference)
+			  TreeSet<Tile> wallRow = wall.get(i);
+			  iter = wallRow.iterator();
+			  while(iter.hasNext())
+			  {
+				  //need to finish, iterate through wallRow
+			  }
+		  }
+	  }
+	 return count;
+  }
   
   
   public int checkVertAdj()
