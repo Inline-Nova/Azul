@@ -510,6 +510,4 @@ public class AzJPanel extends JPanel implements KeyListener, MouseListener{
 	}
 
 }
-
-	}
 	
