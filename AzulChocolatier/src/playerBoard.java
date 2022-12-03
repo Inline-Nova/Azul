@@ -116,15 +116,14 @@ public class playerBoard
 		  }
 	  }
   }
+  
   public void checkCompleteSet() {
 	  for (int cnt = 0; cnt < 5; cnt++) {
 		  int num = 0;
-		  for (int i = 0; i < patternLines.size(); i++) {
-			  for (int j = 0; j < patternLines.get(j).length; j++) {
 				  //if () {
 					  // idk how to get the color of the tiles - use toString()
 				  //}
-	  int num = 0;
+	  num = 0;
 	  for (Tile[] a: patternLines) {
 		  for (int i = 0; i < a.length; i++) {
 			  if (a[i].toString().equals("blue")) {
@@ -176,18 +175,33 @@ public class playerBoard
 	  if (num == 5) {
 		  score += 7;
 	  }
+	 }
   }
 	
- public void checkHorAdj()
-  {
-	  //if patternline row is full, check HorAdj. if not, do nothing
-	  //discard all but one tile
-	  for(int i = 0; i < patternLines.size(); i++)
-	  {
-		  
-	  }
-	  return 0;
-  }
+// public int checkHorAdj()
+//  {
+//	 int count = 0;
+//	 ListIterator<Tile> iter;
+//	  //if patternline row is full, check HorAdj. if not, do nothing
+//	  //discard all but one tile
+//	  for(int i = 0; i < patternLines.size(); i++)
+//	  {
+//		  Tile[] row = patternLines.get(i);
+//		  if(!row[row.length - 1].isEmpty())
+//		  {
+//			  //patternline row is full
+//			  Tile newlyAddedTile = row[0];
+//			  //add tile to wall (see pic for reference)
+//			  TreeSet<Tile> wallRow = wall.get(i);
+//			  iter = wallRow.iterator();
+//			  while(iter.hasNext())
+//			  {
+//				  //need to finish, iterate through wallRow
+//			  }
+//		  }
+//	  }
+//	 return count;
+//  }
   
   
   public int checkVertAdj()
