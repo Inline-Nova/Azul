@@ -203,6 +203,7 @@ public class playerBoard
 //	 return count;
 //  }
 
+//new idea for wall
  public int checkHorAdj()
   {
 	 int count = 0;
@@ -221,7 +222,7 @@ public class playerBoard
 			  iter = wallRow.iterator();
 			  while(iter.hasNext())
 			  {
-				  //need to finish, iterate through wallRow
+				  //
 			  }
 		  }
 	  }
@@ -231,7 +232,21 @@ public class playerBoard
   
   public int checkVertAdj()
   {
-	  return 0;
+	  int count = 0;
+	 ListIterator<Tile> iter;
+	  //discard all but one tile
+	  for(int i = 0; i < patternLines.size(); i++)
+	  {
+		  Tile[] patternRow = patternLines.get(i);
+		  if(!patternRow[patternRow.length - 1].isEmpty())
+		  {
+			  //patternline row is full
+			  Tile newlyAddedTile = row[0];
+			  //add tile to wall (see pic for reference)
+			  //for(TreeSet row: wall
+		  }
+	  }
+	 return count;
   }
 	
   public void setCoordsPat(int curr) {
