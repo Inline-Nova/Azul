@@ -20,6 +20,15 @@ public class Bag extends tileStorage
 
   }
   
+  public Bag(String str) {
+  System.out.println("Zero");
+  }
+	  
+  
+  public Bag(ArrayList<Tile> tis){
+	  super.fillTiles(tis);
+  }
+  
   public ArrayList<Tile> getNewFacTiles()
   {
 	  ArrayList<Tile> newTiles = new ArrayList<Tile>();

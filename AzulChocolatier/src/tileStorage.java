@@ -14,7 +14,9 @@ public class tileStorage
 	}
 	
 	public void fillTiles(ArrayList<Tile> tis) {
-		tiles = tis;
+		for(Tile ti: tis) {
+			tiles.add(new Tile(ti.toString()));
+		}
 		shuffle();
 	}
 	
@@ -24,6 +26,18 @@ public class tileStorage
 	
 	public void addTile(Tile ti) {
 		tiles.add(ti);
+	}
+	
+	public void addTile(Tile ti, int am) {
+		for(int i = 0; i < am; i++) {
+			tiles.add(new Tile(ti.toString()));
+		}
+	}
+	
+	public void removeAm(int am) {
+		for (int i = 0; i < am; i++) {
+			tiles.remove(0);
+		}
 	}
 	
 	public void shuffle() {
