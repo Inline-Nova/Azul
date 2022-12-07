@@ -110,8 +110,8 @@ public class playerBoard
 	  System.out.println("Scoring " + ti.toString() + " in row " + row);
 	  System.out.println("Vert: " + checkVertAdj(ti, row) + " & Hor: " + checkHorAdj(ti, row));
 	  score += checkVertAdj(ti, row) + checkHorAdj(ti, row);
-	  if(checkVertAdj(ti, row) > 1 && checkHorAdj(ti, row)> 1)score += 2;
-	  else if(checkHorAdj(ti, row) == 0  && checkVertAdj(ti, row) == 0) score++;
+	  //if(checkVertAdj(ti, row) > 1 && checkHorAdj(ti, row)> 1)score += 2;
+	  /*else*/ if(checkHorAdj(ti, row) == 0  && checkVertAdj(ti, row) == 0) score++;
 	  for(int i = 0; i < patternLines.get(row).length; i++) {
 		  patternLines.get(row)[i] = null;
 	  }
