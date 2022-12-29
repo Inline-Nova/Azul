@@ -64,6 +64,11 @@ public class AzMain {
 		return done;
 	}
 	
+	public void changeDone() {
+		done = true;
+		scoring = false;
+	}
+	
 	public Discarded getDiscarded() {
 		return discarded;
 	}
@@ -367,16 +372,19 @@ public class AzMain {
 	    			System.out.println("DONE");
 	    			done = true;
 	    			for(int i = 0; i < 4; i++) {
-	    				
+	    				boards.get(i).checkBonus();
+	    				System.out.println("player " + (i+1) + " row: " + boards.get(i).checkRow());
+	    				System.out.println("player " + (i+1) + " column: " + boards.get(i).checkColumn());
+	    				System.out.println("player " + (i+1) + " complete: " + boards.get(i).checkCompleteSet());
 	    			}
 	    			int scr0 = boards.get(0).getScore();
 	    			int scr1 = boards.get(1).getScore();
 	    			int scr2 = boards.get(2).getScore();
 	    			int scr3 = boards.get(3).getScore();
-	    			if(scr0 > scr1 && scr0 > scr2 && scr0 > scr3) win = win + "0 ";
-	    			else if(scr1 > scr0 && scr1 > scr2 && scr1 > scr3) win = win + "1 ";
-	    			else if(scr2 > scr1 && scr2 > scr0 && scr2 > scr3) win = win + "2 ";
-	    			else if(scr3 > scr1 && scr3 > scr2 && scr3 > scr0) win = win + "3 ";
+	    			if(scr0 >= scr1 && scr0 >= scr2 && scr0 >= scr3) win = win + "1 ";
+	    			else if(scr1 >= scr0 && scr1 >= scr2 && scr1 >= scr3) win = win + "2 ";
+	    			else if(scr2 >= scr1 && scr2 >= scr0 && scr2 >= scr3) win = win + "3 ";
+	    			else if(scr3 >= scr1 && scr3 >= scr2 && scr3 >= scr0) win = win + "4 ";
 	    			
 	    			break;
 	    		}

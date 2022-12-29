@@ -208,12 +208,12 @@ public class playerBoard
 	  for (int j = 0; j < wall[0].length; j++) {
 		  int num = 0;
 		  for (int i = 0; i < wall.length; i++) {
-			  if (!wall[i][j].equals(null)) {
+			  if (wall[i][j] != null) {
 				  num++;
 			  }
 		  }
 		  if (num == 5) {
-			  result += 5;
+			  result += 7;
 		  }
 	  }
 	  System.out.println("Col: " + result);
@@ -223,64 +223,66 @@ public class playerBoard
   
   public int checkCompleteSet() {
 	  int result = 0;
-	  for (int cnt = 0; cnt < 5; cnt++) {
-		  int num = 0;
+	  int num = 0;
 				  //if () {
 					  // idk how to get the color of the tiles - use toString()
 				  //}
 	  num = 0;
 	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("blue")) {
+			  if (a[i]!= null && a[i].toString().equals("blue")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  result += 7;
+		  result += 10;
 	  }
 	  num = 0;
 	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("black")) {
+			  if (a[i]!= null && a[i].toString().equals("black")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  result += 7;
+		  result += 10;
 	  }
-	  num = 0;for (Tile[] a: wall) {
+	  num = 0;
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("red")) {
+			  if (a[i]!= null && a[i].toString().equals("red")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  result += 7;
+		  result += 10;
 	  }
-	  num = 0;for (Tile[] a: wall) {
+	  num = 0;
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("white")) {
+			  if (a[i]!= null && a[i].toString().equals("white")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  result += 7;
+		  result += 10;
 	  }
-	  num = 0;for (Tile[] a: wall) {
+	  num = 0;
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("brown")) {
+			  if (a[i]!= null && a[i].toString().equals("brown")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  result += 7;
+		  result += 10;
 	  }
-	 }
+	 
 	  return result;
   }
 
