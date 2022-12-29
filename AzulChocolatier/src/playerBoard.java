@@ -16,7 +16,9 @@ public class playerBoard
 	  for(int i = 1; i < 6; i++) {
 		  patternLines.add(new Tile[i]); 
 	  }
-	  floorLine = new ArrayList<>();
+	  floorLine = new ArrayList<
+    
+    ();
 	  wall = new Tile[5][5];
 	  
   }
@@ -385,6 +387,7 @@ public class playerBoard
 //		  }
 //	  }
 //	 return count;
+
   }
   
   
@@ -456,6 +459,55 @@ public class playerBoard
 	  }
 	  if(scor == 1)scor = 0;
 	  return scor;
+=======
+//  }
+
+//new idea for wall
+ public int checkHorAdj()
+  {
+	 int count = 0;
+	 ListIterator<Tile> iter;
+	  //if patternline row is full, check HorAdj. if not, do nothing
+	  //discard all but one tile
+	  for(int i = 0; i < patternLines.size(); i++)
+	  {
+		  Tile[] row = patternLines.get(i);
+		  if(!row[row.length - 1].isEmpty())
+		  {
+			  //patternline row is full
+			  Tile newlyAddedTile = row[0];
+			  //add tile to wall (see pic for reference)
+			  TreeSet<Tile> wallRow = wall.get(i);
+			  iter = wallRow.iterator();
+			  while(iter.hasNext())
+			  {
+				  //
+			  }
+		  }
+	  }
+	 return count;
+  }
+  
+  
+  public int checkVertAdj()
+  {
+	  int count = 0;
+	 ListIterator<Tile> iter;
+	  //discard all but one tile
+	  for(int i = 0; i < patternLines.size(); i++)
+	  {
+		  Tile[] patternRow = patternLines.get(i);
+		  if(!patternRow[patternRow.length - 1].isEmpty())
+		  {
+			  //patternline row is full
+			  Tile newlyAddedTile = row[0];
+			  //add tile to wall (see pic for reference)
+			  //for(TreeSet row: wall
+		  }
+	  }
+	 return count;
+
+
   }
 	
   public void setCoordsPat(int curr) {
