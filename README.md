@@ -7,6 +7,4 @@ This was a recreation of the Choclatier version of the game, Azul
 
 ![Az_Ref1](https://user-images.githubusercontent.com/89323784/210018067-4003f180-21c7-495a-a930-8ddb5600ab7a.png)
 
-![Az_Ref2](https://user-images.githubusercontent.com/89323784/210018069-f66ef794-4196-457a-bcdd-3ebfc8d39d13.png)
-
 ![Az_EndScreen](https://user-images.githubusercontent.com/89323784/210018065-885422a2-3b99-46a5-b99f-bb7eb6222ec2.png)
