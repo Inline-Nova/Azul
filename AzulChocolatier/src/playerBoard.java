@@ -5,7 +5,7 @@ public class playerBoard
 {
   private ArrayList<Tile[]> patternLines;
   private ArrayList<Tile> floorLine;
-  private ArrayList<TreeSet<Tile>> wall;
+  private Tile[][] wall;
   private boolean gameDone;
   private int score;
   
@@ -16,13 +16,14 @@ public class playerBoard
 	  for(int i = 1; i < 6; i++) {
 		  patternLines.add(new Tile[i]); 
 	  }
-	  floorLine = new ArrayList<>();
-	  wall = new ArrayList<>();
-	  for(int i = 0; i < 6; i++) {
-		  wall.add(new TreeSet<Tile>());
-	  }
+	  floorLine = new ArrayList<
+    
+    ();
+	  wall = new Tile[5][5];
 	  
   }
+  
+  
   
   public void addToPatternLines(ArrayList<Tile> tis, int row) {
 	  //System.out.println("addToPatternLine");
@@ -45,17 +46,21 @@ public class playerBoard
 				  }
 			  }
 			  if(!placed) {//this placed in floor line if patternLine is full
-				  floorLine.add(ti);
+				  
+				  if(floorLine.size() < 7) floorLine.add(ti);
+				  else floorLine.add(new Tile(ti.toString()));
 			  }
 		  }else {
-			  floorLine.add(ti);
+			  
+			  if(floorLine.size() < 7) floorLine.add(ti);
+			  else floorLine.add(new Tile(ti.toString()));
 		  }
 	  }
-	  printPatternLines();
+	  //printPatternLines();
   }
   
   public String printPatternLines() {
-	  System.out.println();
+//	  System.out.println();
 	  String temp = "";
 	  for(Tile[] tis: patternLines) {
 		  for(Tile titi: tis) {
@@ -64,12 +69,12 @@ public class playerBoard
      		}
 		  System.out.println();
 	  }
-	  System.out.println(floorLine.toString());
-	  System.out.println();
+//	  System.out.println(floorLine.toString());
+//	  System.out.println();
 	  return temp;
   }
   
-  public ArrayList<TreeSet<Tile>> getWall(){
+  public Tile[][] getWall(){
 	  return wall;
   }
   
@@ -85,101 +90,282 @@ public class playerBoard
 	  return score;
   }
   
+  public void setScore(int sc) {
+	  score = sc;
+  }
+  
   public boolean gameEnd() {
 	  gameDone = true;
 	  return gameDone;
   }
   
-  public void checkRow() {
-	  for (Tile[] a: patternLines) {
-		  int num = 0;
-		  for (int i = 0; i < a.length; i++) {
-			  if (!a[i].equals(null)) {
-				  num++;
-			  }
-		  }
-		  if (num == 5) {
-			  score += 2;
+  public boolean hasOne() {
+	  for(Tile ti: floorLine) {
+		  if(ti.toString() == "one") {
+			  return true;
 		  }
 	  }
+	  return false;
   }
-  public void checkColumn() {
-	  for (int j = 0; j < patternLines.get(j).length; j++) {
-		  int num = 0;
-		  for (int i = 0; i < patternLines.size(); i++) {
-			  if (!patternLines.get(i)[j].equals(null)) {
-				  num++;
-			  }
-		  }
-		  if (num == 5) {
-			  score += 5;
-		  }
+  
+  public void score(Tile ti, int row) {
+	  System.out.println("Scoring " + ti.toString() + " in row " + row);
+	  System.out.println("Vert: " + checkVertAdj(ti, row) + " & Hor: " + checkHorAdj(ti, row));
+	  score += checkVertAdj(ti, row) + checkHorAdj(ti, row);
+	  //if(checkVertAdj(ti, row) > 1 && checkHorAdj(ti, row)> 1)score += 2;
+	  /*else*/ if(checkHorAdj(ti, row) == 0  && checkVertAdj(ti, row) == 0) score++;
+	  for(int i = 0; i < patternLines.get(row).length; i++) {
+		  patternLines.get(row)[i] = null;
 	  }
   }
   
-  public void checkCompleteSet() {
-	  for (int cnt = 0; cnt < 5; cnt++) {
+  public ArrayList<Tile> scoreMinus() {
+	  ArrayList<Tile> discard = new ArrayList<>();
+	  for(int i = 0; i < floorLine.size(); i++) {
+		  if(i < 7){
+			  switch(i) {
+			  case 0:
+				  //System.out.println(1.1);
+				  System.out.println("menos 1 " + score);
+				  if(score - 1 >= 0)score = score -1;
+				  else score = 0;
+				  System.out.println("menos 1 " + score);
+				  break;
+			  case 1:
+				  //System.out.println(1.2);
+				  System.out.println("menos 1 " + score);
+				  if(score - 1 >= 0)score = score -1;
+				  else score = 0;
+				  System.out.println("menos 1 " + score);
+				  break;
+			  case 2:
+				  //System.out.println(2.1);
+				  System.out.println("menos 2 " + score);
+				  if(score - 2 >= 0)score = score -2;
+				  else score = 0;
+				  System.out.println("menos 2 " + score);
+				  break;
+			  case 3:
+				  //System.out.println(2.2);
+				  System.out.println("menos 2 " + score);
+				  if(score - 2 >= 0)score = score -2;
+				  else score = 0;
+				  System.out.println("menos 2 " + score);
+				  break;
+			  case 4:
+				  //System.out.println(2.3);
+				  System.out.println("menos 2 " + score);
+				  if(score - 2 >= 0)score = score -2;
+				  else score = 0;
+				  System.out.println("menos 2 " + score);
+				  break;
+			  case 5:
+				  //System.out.println(3.1);
+				  System.out.println("menos 3 " + score);
+				  if(score - 3 >= 0)score = score -3;
+				  else score = 0;
+				  System.out.println("menos 3 " + score);
+				  break;
+			  case 6:
+				  //System.out.println(3.2);
+				  System.out.println("menos 3 " + score);
+				  if(score - 3 >= 0)score = score -3;
+				  else score = 0;
+				  System.out.println("menos 3 " + score);
+				  break;
+			  }
+		  }
+		  if(!(floorLine.get(i).toString().equals("one"))) discard.add(floorLine.get(i));
+	  }
+	  floorLine = new ArrayList<>();
+	  return discard;
+  }
+  
+  
+  public void checkBonus() {
+	  score += checkRow();
+	  score += checkColumn();
+	  score += checkCompleteSet();
+  }
+  
+  public int checkRow() {
+	  int result = 0;
+	  for (Tile[] a: wall) {
 		  int num = 0;
+		  for (int i = 0; i < a.length; i++) {
+			  if (!(a[i] == null)) {
+				  num++;
+			  }
+		  }
+		  if (num == 5) {
+			  result += 2;
+		  }
+	  }
+	  System.out.println("ROW: " + result);
+	  return result;
+  }
+  
+  public int checkColumn() {
+	  int result = 0;
+	  for (int j = 0; j < wall[0].length; j++) {
+		  int num = 0;
+		  for (int i = 0; i < wall.length; i++) {
+			  if (wall[i][j] != null) {
+				  num++;
+			  }
+		  }
+		  if (num == 5) {
+			  result += 7;
+		  }
+	  }
+	  System.out.println("Col: " + result);
+	  return result;
+  }
+  
+  
+  public int checkCompleteSet() {
+	  int result = 0;
+	  int num = 0;
 				  //if () {
 					  // idk how to get the color of the tiles - use toString()
 				  //}
 	  num = 0;
-	  for (Tile[] a: patternLines) {
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("blue")) {
+			  if (a[i]!= null && a[i].toString().equals("blue")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  score += 7;
+		  result += 10;
 	  }
 	  num = 0;
-	  for (Tile[] a: patternLines) {
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("black")) {
+			  if (a[i]!= null && a[i].toString().equals("black")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  score += 7;
+		  result += 10;
 	  }
-	  num = 0;for (Tile[] a: patternLines) {
+	  num = 0;
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("red")) {
+			  if (a[i]!= null && a[i].toString().equals("red")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  score += 7;
+		  result += 10;
 	  }
-	  num = 0;for (Tile[] a: patternLines) {
+	  num = 0;
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("white")) {
+			  if (a[i]!= null && a[i].toString().equals("white")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  score += 7;
+		  result += 10;
 	  }
-	  num = 0;for (Tile[] a: patternLines) {
+	  num = 0;
+	  for (Tile[] a: wall) {
 		  for (int i = 0; i < a.length; i++) {
-			  if (a[i].toString().equals("brown")) {
+			  if (a[i]!= null && a[i].toString().equals("brown")) {
 				  num++;
 			  }
 		  }
 	  }
 	  if (num == 5) {
-		  score += 7;
+		  result += 10;
 	  }
-	 }
+	 
+	  return result;
   }
-	
-// public int checkHorAdj()
-//  {
+
+ public int checkHorAdj(Tile ti, int row)
+  {
+	 int col = 0;
+	  switch(row) {
+	  case 0:
+		  if(ti.toString().equals("blue")) col = 0;
+		  else if(ti.toString().equals("brown")) col = 1;
+		  else if(ti.toString().equals("white")) col = 2;
+		  else if(ti.toString().equals("black")) col = 3;
+		  else if(ti.toString().equals("red")) col = 4;
+		  
+		  break;
+	  case 1:
+		  if(ti.toString().equals("red")) col = 0;
+		  else if(ti.toString().equals("blue")) col = 1;
+		  else if(ti.toString().equals("brown")) col = 2;
+		  else if(ti.toString().equals("white")) col = 3;
+		  else if(ti.toString().equals("black")) col = 4;
+		  
+		  break;
+	  case 2:
+		  if(ti.toString().equals("black")) col = 0;
+		  else if(ti.toString().equals("red")) col = 1;
+		  else if(ti.toString().equals("blue")) col = 2;
+		  else if(ti.toString().equals("brown")) col = 3;
+		  else if(ti.toString().equals("white")) col = 4;
+		  
+		  break;
+	  case 3:
+		  if(ti.toString().equals("white")) col = 0;
+		  else if(ti.toString().equals("black")) col = 1;
+		  else if(ti.toString().equals("red")) col = 2;
+		  else if(ti.toString().equals("blue")) col = 3;
+		  else if(ti.toString().equals("brown")) col = 4;
+		  
+		  break;
+	  case 4:
+		  if(ti.toString().equals("brown")) col = 0;
+		  else if(ti.toString().equals("white")) col = 1;
+		  else if(ti.toString().equals("black")) col = 2;
+		  else if(ti.toString().equals("red")) col = 3;
+		  else if(ti.toString().equals("blue")) col = 4;
+		  
+		  break;
+	  }
+	  int scor = 1;
+	  int change = 1;
+	  //System.out.println();
+	  wall[row][col] = ti;
+	  while(col-change >= 0) {
+		  if(wall[row][col-change] != null) {
+			  scor++;
+			  change++;
+		  }else {
+			break;  
+		  }
+		  
+	  }
+	  change = 1;
+	  while(col+change <= 4) {
+		  if(wall[row][col+change] != null) {
+			  scor++;
+			  change++;
+		  }else {
+			 break; 
+		  }
+		  
+	  } 
+	  if(scor == 1)scor = 0;
+	  return scor;
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 // sorry it was giving errors :C
 //	 int count = 0;
 //	 ListIterator<Tile> iter;
 //	  //if patternline row is full, check HorAdj. if not, do nothing
@@ -201,6 +387,79 @@ public class playerBoard
 //		  }
 //	  }
 //	 return count;
+
+  }
+  
+  
+  public int checkVertAdj(Tile ti, int row){
+	  int col = 0;
+	  switch(row) {
+	  case 0:
+		  if(ti.toString().equals("blue")) col = 0;
+		  else if(ti.toString().equals("brown")) col = 1;
+		  else if(ti.toString().equals("white")) col = 2;
+		  else if(ti.toString().equals("black")) col = 3;
+		  else if(ti.toString().equals("red")) col = 4;
+		  
+		  break;
+	  case 1:
+		  if(ti.toString().equals("red")) col = 0;
+		  else if(ti.toString().equals("blue")) col = 1;
+		  else if(ti.toString().equals("brown")) col = 2;
+		  else if(ti.toString().equals("white")) col = 3;
+		  else if(ti.toString().equals("black")) col = 4;
+		  
+		  break;
+	  case 2:
+		  if(ti.toString().equals("black")) col = 0;
+		  else if(ti.toString().equals("red")) col = 1;
+		  else if(ti.toString().equals("blue")) col = 2;
+		  else if(ti.toString().equals("brown")) col = 3;
+		  else if(ti.toString().equals("white")) col = 4;
+		  
+		  break;
+	  case 3:
+		  if(ti.toString().equals("white")) col = 0;
+		  else if(ti.toString().equals("black")) col = 1;
+		  else if(ti.toString().equals("red")) col = 2;
+		  else if(ti.toString().equals("blue")) col = 3;
+		  else if(ti.toString().equals("brown")) col = 4;
+		  
+		  break;
+	  case 4:
+		  if(ti.toString().equals("brown")) col = 0;
+		  else if(ti.toString().equals("white")) col = 1;
+		  else if(ti.toString().equals("black")) col = 2;
+		  else if(ti.toString().equals("red")) col = 3;
+		  else if(ti.toString().equals("blue")) col = 4;
+		  
+		  break;
+	  }
+	  int scor = 1;
+	  int change = 1;
+	  wall[row][col] = ti;
+	  while(row-change >= 0) {
+		  if(wall[row - change][col] != null) {
+			  scor++;
+			  change++;
+		  }else {
+			break;  
+		  }
+		  
+	  }
+	  change = 1;
+	  while(row+change <= 4) {
+		  if(wall[row + change][col] != null) {
+			  scor++;
+			  change++;
+		  }else {
+			 break; 
+		  }
+		  
+	  }
+	  if(scor == 1)scor = 0;
+	  return scor;
+=======
 //  }
 
 //new idea for wall
@@ -247,6 +506,8 @@ public class playerBoard
 		  }
 	  }
 	 return count;
+
+
   }
 	
   public void setCoordsPat(int curr) {
@@ -256,14 +517,14 @@ public class playerBoard
 				  {{219, 273}, {183, 273}, {145, 273}}, {{219, 309}, 
 					  {183, 309}, {145, 309}, {108, 309}}, 
 				  {{219, 345}, {183, 345}, {145, 345}, {108, 345}, {71, 345}}, 
-				  {{74, 417}, {116, 417}, {156, 417}, {198, 417}, {235, 417}, {278, 417}, {341, 417}}};
+				  {{74, 417}, {116, 417}, {156, 417}, {198, 417}, {235, 417}, {278, 417}, {313, 417}}};
 		  coords = temp;
 	  }else if(curr == 3) {
 		  int[][][] temp = {{{219,651}}, {{219, 689}, {183, 689}}, 
 				  {{219, 726}, {183, 726}, {145, 726}}, 
 				  {{219, 762}, {183, 762}, {145, 762}, {108, 762}}, 
 				  {{219, 799}, {183, 799}, {145, 799}, {108, 799}, {71, 799}}, 
-				  {{74, 870}, {116, 870}, {156, 870}, {198, 870}, {235, 870}, {278, 870}, {341, 870}}};
+				  {{74, 870}, {116, 870}, {156, 870}, {198, 870}, {235, 870}, {278, 870}, {313, 870}}};
 		  coords = temp;
 	  }else if(curr == 1) {
 		  int[][][] temp = {{{1466,200}}, {{1466, 236}, {1431, 236}}, 
@@ -291,12 +552,12 @@ public class playerBoard
 			  floorLine.get(i).changeCoords(coords[5][i][0], coords[5][i][1]);
 		  }
 	  }
-	  System.out.println("\n FloorLine");
-	  for(int i = 0; i < floorLine.size(); i++) {
-		  System.out.print("(" + floorLine.get(i).getX() + ", " + floorLine.get(i).getY() + "), ");
-	  }
-	  System.out.println();
-	  System.out.println();
+//	  System.out.println("\n FloorLine");
+//	  for(int i = 0; i < floorLine.size(); i++) {
+//		  System.out.print("(" + floorLine.get(i).getX() + ", " + floorLine.get(i).getY() + "), ");
+//	  }
+//	  System.out.println();
+//	  System.out.println();
   }
   
   public void setCoordsPatPick(){
@@ -316,6 +577,17 @@ public class playerBoard
 	  for(int i = 0; i < floorLine.size(); i++) {
 		  if(i < 7) {
 			  floorLine.get(i).changeCoords(coords[5][i][0], coords[5][i][1]);
+		  }
+	  }
+  }
+  
+  public void setCoordsWall(int curr) {
+	  int[][] coords = {{275, 199}, {1522, 199},
+	  			{1522, 650}, {275, 650}};
+	  for(int i = 0; i < wall.length; i++) {
+		  for(int j = 0; j < wall[i].length; j++) {
+			  if(wall[i][j] != null)
+				  wall[i][j].changeCoords((int)(coords[curr][0]+(j*38)), (int)(coords[curr][1]+(i*37.75)));
 		  }
 	  }
   }

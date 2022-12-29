@@ -3,6 +3,11 @@ import java.util.*;
 public class factoryDisplay
 {
   private ArrayList<ArrayList<Tile>> factories; //hi
+  //private String title;
+  
+  public factoryDisplay(ArrayList<ArrayList<Tile>> te) {
+	  factories = te;
+  }
   
   public factoryDisplay(Bag bag, Discarded dis)
   {
@@ -11,18 +16,41 @@ public class factoryDisplay
 	  setCoords();
   }
   
+//  public ArrayList<ArrayList<Tile>> changeFacts(ArrayList<ArrayList<Tile>>facts) {
+//	  factories = new ArrayList<ArrayList<Tile>>();
+//	  for(ArrayList<Tile> tis: facts) {
+//		  factories.add(tis);
+//	  }
+//	  return factories();
+//  }
+  
   public void fillFactories(Bag bag, Discarded dis)
   {
+	  Bag tempBag = bag;
+//	  System.out.println();
+//	  System.out.println("DIS: " + dis.getTiles().toString());
+//	  if(bag.getTiles().size() < 36)
+//		{
+//			System.out.println("BAG SIZE: " + tempBag.getTiles().size());
+//			tempBag.refill(dis);
+//			System.out.println("BAG SIZE AFTER: " + tempBag.getTiles().size());
+//		}
+	//ArrayList<Tile> result = new ArrayList<Tile>();
 	for(int i = 0; i < 9; i++)
 	{
-		if(bag.getTiles().isEmpty())
-		{
-			bag.refill(dis);
-		}
-		factories.add(bag.getNewFacTiles()); //Bag class needs to be finished
+		factories.add(tempBag.getNewFacTiles()); //Bag class needs to be finished
 		
 	}
 	factories.add(new ArrayList<Tile>());
+//	for(ArrayList<Tile> tis: factories) {
+//		for(Tile ti: tis) {
+//			System.out.print(ti.toString() + ", ");
+//		}
+//		System.out.println();
+//	}
+	//System.out.println("TEMPBAG (" + tempBag.getTiles().size() + ") ");
+	//return factories;
+	setCoords();
   }
   
   
@@ -37,7 +65,7 @@ public class factoryDisplay
   }
   
   public boolean allIsEmpty() {
-	  for(int i = 0; i < 9; i++)
+	  for(int i = 0; i < 10; i++)
 		{
 			if(!(factories.get(i).isEmpty()))
 			{
@@ -45,6 +73,15 @@ public class factoryDisplay
 			}
 		}
 	  return true;
+  }
+  
+  public void addOneTile() {
+	  factories.get(9).add(new Tile("one"));
+	  setCoordsMid();
+  }
+  
+ public void removeOneTile() {
+	  
   }
   
   public ArrayList<Tile> moveTiles(int sect, Tile til){
@@ -69,12 +106,14 @@ public class factoryDisplay
 			  }
 		  }
 	  }
+	  //setCoords();
+	  setCoordsMid();
 	  return tiles;
   }
   
   public void setCoords(){
 	  int[][][] coords = { {{867, 150},{917, 150}, {867, 200}, {917, 200}}, 
-			  {{1070, 225}, {1120, 225}, {1070, 275}, {1120, 275}},
+			  {{1070, 230}, {1120, 230}, {1070, 280}, {1120, 280}},
 			  {{1130, 410}, {1180, 410}, {1130, 460}, {1180,460}},
 			  {{1107, 595}, {1157, 595}, {1107, 645}, {1157, 645}},
 			  {{940, 700}, {990, 700}, {940, 750}, {990, 750}},
@@ -82,7 +121,7 @@ public class factoryDisplay
 			  {{595, 563}, {645, 563}, {595, 613}, {645, 613}},
 			  {{572, 375}, {622, 375}, {572, 425}, {622, 425}},
 			  {{666, 207}, {716, 207}, {666, 257}, {716, 257}}};
-	  for(int i = 0; i < 9/*factories.size()*/; i++) {
+	  for(int i = 0; i < factories.size()-1; i++) {
 		  for(int j = 0; j < 4/*factories.get(0).size()*/; j++) {
 			  factories.get(i).get(j).changeCoords(coords[i][j][0], coords[i][j][1]);
 		  }
